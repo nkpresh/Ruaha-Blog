@@ -1,0 +1,424 @@
+﻿<!DOCTYPE html>
+@inject SignInManager<IdentityUser> signInManager;
+
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <environment include="Development">
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+              crossorigin="anonymous"
+              asp-fallback-href="~/lib/bootstrap/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-suppress-fallback-integrity="true">
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    </environment>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="~/favicon/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="~/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/favicon/apple-touch-icon-114x114.png" />
+
+    <link rel="stylesheet" media="screen" href="~/css/base.css" />
+
+    <script src="~/js/modernizr-2.6.2.min.js"></script>
+
+    <!-- JQuery Plugins-->
+    <script type="text/javascript" src="js/jquery-min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="js/menuzord.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+    <script type='text/javascript' src="js/jflickrfeed.min.js"></script>
+    <script type='text/javascript' src="js/jquery.fancybox.js"></script>
+    <script type='text/javascript' src="js/jquery.validate.min.js"></script>
+    <script type='text/javascript' src="twitter/jquery.tweet.js"></script>
+
+    <script type='text/javascript' src="js/site-custom.js"></script>
+    <script>
+        var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+        (function (d, t) {
+            var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            g.src = '../../../www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
+    </script>
+</head>
+<body class="wide mr-lg-auto">
+    <!-- xxx Header Start xxx -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        A Bright Sunny Day Or Some Line Of Text
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                                <li>
+                                    <div class="box-search">
+                                        <input class="search-input" type="search" placeholder="Search" />
+                                        <div class="icon"></div>
+                                    </div>
+                                    <a href="#" class="icon"><i class="fa fa-search"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="nav-wrap">
+            <div class="container">
+                <div id="menuzord" class="menuzord red pull-left">
+                    <a href="javascript:void(0)" class="menuzord-brand"><img src="~/images/logo.png" alt="Ruaha Logo"></a>
+                    <ul class="menuzord-menu">
+                        <li class="active">
+                            <a asp-controller="home" asp-action="index">Home</a>
+                        </li>
+                        <li>
+                            <a asp-controller="home" asp-action="index">PROFILE</a>
+                            <ul class="dropdown">
+                                @if (signInManager.IsSignedIn(User))
+                                {
+                                    <li>
+                                        <form method="post" asp-controller="Account" asp-action="Logout">
+                                            <button type="submit" class="nav-link btn btn-link py-0" style="width:auto">Logout @User.Identity.Name</button>
+                                        </form>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li><a asp-controller="Account" asp-action="Register">Sign-up</a></li>
+                                    <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                                }
+                            </ul>
+                        </li>
+                        <li><a asp-controller="Home" asp-action="Creat">CREAT POST</a></li>
+                        <li>
+                            <a href="javascript:void(0)">Category</a>
+                            <div class="megamenu">
+                                <div class="megamenu-row">
+                                    <div class="col4">
+                                        <h3>Recent Posts</h3>
+                                        <ul class="sidebar-post">
+                                            <li>
+                                                <div class="image-thumb">
+                                                    <a href="#"><img alt="" src="~/images/slider/slider-1.jpg"></a>
+                                                </div>
+                                                <div class="post-text">
+                                                    <h4><a href="#">Light House - The Beauty Of Paris</a></h4>
+                                                    <div class="post-date">
+                                                        <i class="fa fa-clock-o"></i> 21 Sep, 2015
+                                                    </div>
+                                                    <div class="post-date">
+                                                        <a href="#"><i class="fa fa-comments-o"></i>15</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="image-thumb">
+                                                    <a href="#"><img alt="" src="~/images/slider/slider-2.jpg"></a>
+                                                </div>
+                                                <div class="post-text">
+                                                    <h4><a href="#">The Iconic View of Hiroshima, Japan</a></h4>
+                                                    <div class="post-date">
+                                                        <i class="fa fa-clock-o"></i> 21 Sep, 2015
+                                                    </div>
+                                                    <div class="post-date">
+                                                        <a href="#"><i class="fa fa-comments-o"></i>15</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="col4">
+                                        <h3>Categories</h3>
+                                        <ul class="category">
+                                            <li>
+                                                <div class="cat-desc">
+                                                    <div class="category-details">
+                                                        <span><a href="#">Entertainment</a></span>
+                                                    </div>
+                                                    <div class="dots"></div>
+                                                    <div class="category-links">
+                                                        <span>(10)</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cat-desc">
+                                                    <div class="category-details">
+                                                        <span><a href="#">Sports</a></span>
+                                                    </div>
+                                                    <div class="dots"></div>
+                                                    <div class="category-links">
+                                                        <span>(05)</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cat-desc">
+                                                    <div class="category-details">
+                                                        <span><a href="#">Travel</a></span>
+                                                    </div>
+                                                    <div class="dots"></div>
+                                                    <div class="category-links">
+                                                        <span>(15)</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cat-desc">
+                                                    <div class="category-details">
+                                                        <span><a href="#">Lifestyle</a></span>
+                                                    </div>
+                                                    <div class="dots"></div>
+                                                    <div class="category-links">
+                                                        <span>(25)</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cat-desc">
+                                                    <div class="category-details">
+                                                        <span><a href="#">Jobs</a></span>
+                                                    </div>
+                                                    <div class="dots"></div>
+                                                    <div class="category-links">
+                                                        <span>(105)</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cat-desc">
+                                                    <div class="category-details">
+                                                        <span><a href="#">Movies</a></span>
+                                                    </div>
+                                                    <div class="dots"></div>
+                                                    <div class="category-links">
+                                                        <span>(02)</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cat-desc">
+                                                    <div class="category-details">
+                                                        <span><a href="#">Music</a></span>
+                                                    </div>
+                                                    <div class="dots"></div>
+                                                    <div class="category-links">
+                                                        <span>(07)</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="col4">
+                                        <h3>Poplular Posts</h3>
+                                        <ul class="recent-post">
+                                            <li>
+                                                <div>
+                                                    <a href="#"><img alt="" src="images/blog/blog-large1.jpg"></a>
+                                                </div>
+                                                <div class="recent-post-text">
+                                                    <h4><a href="#">Better Knowledge Keeps You Ahead In Life</a></h4>
+                                                    <div class="post-date">
+                                                        <i class="fa fa-clock-o"></i> 21 Sep, 2015
+                                                    </div>
+                                                    <div class="post-date">
+                                                        <a href="#"><i class="fa fa-comments-o"></i>15</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a asp-action="contact" asp-controller="home">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
+    <!-- xxx Header End xxx -->
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="widget-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="footer-dark">
+                            <div class="text-footer">
+                                <div class="footer-logo"><img src="images/logo.png" alt=""></div>
+                                <div><a href="#">Ruaha Blog WordPress Theme</a> is a Minimal, elegant looking theme that is perfect for personal, corporate, business, travel blog, photography, fashion blogging and more. Built with <a target="_blank" href="http://getbootstrap.com/">Bootstrap 3.3.2 Framework</a>, it is totally responsive and easy to customize using tons of shortcodes. </div>
+
+                                <div class="social-icons footer">
+                                    <ul>
+                                        <li><a data-original-title="Twitter" title="" data-toggle="tooltip" href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a data-original-title="Facebook" title="" data-toggle="tooltip" href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a data-original-title="Pinterest" title="" data-toggle="tooltip" href="#"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a data-original-title="Google Plus" title="" data-toggle="tooltip" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-4">
+                                <div class="sidebar-head"><span>Categories</span></div>
+                                <ul class="category">
+                                    <li>
+                                        <div class="cat-desc">
+                                            <div class="category-details">
+                                                <span><a href="#">Entertainment</a></span>
+                                            </div>
+                                            <div class="dots"></div>
+                                            <div class="category-links">
+                                                <span>(10)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cat-desc">
+                                            <div class="category-details">
+                                                <span><a href="#">Sports</a></span>
+                                            </div>
+                                            <div class="dots"></div>
+                                            <div class="category-links">
+                                                <span>(05)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cat-desc">
+                                            <div class="category-details">
+                                                <span><a href="#">Travel</a></span>
+                                            </div>
+                                            <div class="dots"></div>
+                                            <div class="category-links">
+                                                <span>(15)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cat-desc">
+                                            <div class="category-details">
+                                                <span><a href="#">Lifestyle</a></span>
+                                            </div>
+                                            <div class="dots"></div>
+                                            <div class="category-links">
+                                                <span>(25)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cat-desc">
+                                            <div class="category-details">
+                                                <span><a href="#">Jobs</a></span>
+                                            </div>
+                                            <div class="dots"></div>
+                                            <div class="category-links">
+                                                <span>(105)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cat-desc">
+                                            <div class="category-details">
+                                                <span><a href="#">Movies</a></span>
+                                            </div>
+                                            <div class="dots"></div>
+                                            <div class="category-links">
+                                                <span>(02)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cat-desc">
+                                            <div class="category-details">
+                                                <span><a href="#">Music</a></span>
+                                            </div>
+                                            <div class="dots"></div>
+                                            <div class="category-links">
+                                                <span>(07)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-sm-4">
+                                <div class="sidebar-head"><span>Recent Comments</span></div>
+                                <div class="">
+                                    <ul class="sidebar-post">
+                                        <li>
+                                            <div class="post-text">
+                                                <h4><a href="#">Light House - The Beauty Of Paris</a></h4>
+                                                <p>Nunc tristique tellus quam, id ultrices urna rhoncus non..</p>
+                                                <div class="post-date">
+                                                    <i class="fa fa-clock-o"></i> 21 Sep, 2015
+                                                </div>
+                                                <div class="post-date">
+                                                    <a href="#"><i class="fa fa-comments-o"></i>15</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="post-text">
+                                                <h4><a href="#">The Iconic View of Hiroshima, Japan</a></h4>
+                                                <p>Nunc tristique tellus quam, id ultrices urna rhoncus non..</p>
+                                                <div class="post-date">
+                                                    <i class="fa fa-clock-o"></i> 21 Sep, 2015
+                                                </div>
+                                                <div class="post-date">
+                                                    <a href="#"><i class="fa fa-comments-o"></i>15</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-inner">
+            <div class="container text-center">
+                <p><a href="#">Home</a> | <a href="#">About</a> | <a href="#">Archives</a> | <a href="#">Contact</a></p>
+                <div>© 2015 - All Rights Reserved.</div>
+            </div>
+        </div>
+    </footer>
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: true)
+    }
+</body>
+
+<!-- Mirrored from mannatstudio.com/html/ruaha/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Oct 2020 17:42:25 GMT -->
+
+</html>

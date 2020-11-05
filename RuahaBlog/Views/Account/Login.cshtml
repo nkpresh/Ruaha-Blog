@@ -1,0 +1,22 @@
+﻿@model LoginViewModel
+
+@{
+    ViewBag.Title = "Login Form";
+}
+<div class="container">
+    <div class="row blog-outer">
+        <form method="post">
+            <div>
+                <div class="row">
+                    <input asp-for="UserName" class="form-control form-control-lg" placeholder="UserName" />
+                </div>
+                <div class="row">
+                    <input asp-for="Password" class="form-control form-control-lg" placeholder="Your Password" />
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-border-round btn-light">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
