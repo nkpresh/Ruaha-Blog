@@ -15,11 +15,13 @@ namespace RuahaBlog.Models
 
         }
 
-        public DbSet<BogPost> blogPosts { get; set; }
+        public DbSet<BogPost> BlogPosts { get; set; }
         protected override void OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder builder)
         {
             base.OnModelCreating(builder);
             builder.Seed();
         }
+        public DbSet<BlogLikes> BlogLikes { get; set; }
+        public DbSet<BlogComments> BlogComments { get; set; }
     }
 }

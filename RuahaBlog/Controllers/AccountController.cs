@@ -33,7 +33,7 @@ namespace RuahaBlog.Controllers
             {
                 var user = new IdentityUser
                 {
-                    UserName = model.Email,
+                    UserName=model.Name,
                     Email = model.Email
                 };
                 var result= await userManager.CreateAsync(user, model.Password);
@@ -51,6 +51,7 @@ namespace RuahaBlog.Controllers
             return View(model);
         }
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
@@ -65,14 +66,17 @@ namespace RuahaBlog.Controllers
                 {
                     if (!string.IsNullOrEmpty(returnUrl))
                     {
-                        return Redirect(returnUrl);
+                        return LocalRedirect(returnUrl);
                     }
                     else
                     {
                         return RedirectToAction("Index", "home");
                     }
                 }
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                }
             }
             return View(model);
         }

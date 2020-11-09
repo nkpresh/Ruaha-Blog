@@ -9,7 +9,6 @@ namespace RuahaBlog.ViewModels
     public class LoginViewModel
     {
         [Required]
-        [DataType(DataType.EmailAddress)]
         public string UserName { get; set; }
         [Required]
         public string Password { get; set; }

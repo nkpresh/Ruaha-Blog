@@ -8,6 +8,7 @@ using RuahaBlog.Models;
 using RuahaBlog.ViewModels;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace RuahaBlog.Controllers
 {
@@ -16,11 +17,13 @@ namespace RuahaBlog.Controllers
     {
         private readonly IBlogPostRepository _blogPostRepository;
         private readonly IWebHostEnvironment hostEnvironment;
+        private readonly UserManager<IdentityUser> userManager;
 
-        public HomeController(IBlogPostRepository blogPostRepository,IWebHostEnvironment hostEnvironment)
+        public HomeController(IBlogPostRepository blogPostRepository,IWebHostEnvironment hostEnvironment,UserManager<IdentityUser> userManager)
         {
             _blogPostRepository = blogPostRepository;
             this.hostEnvironment = hostEnvironment;
+            this.userManager = userManager;
         }
         [AllowAnonymous]
         public IActionResult Index()
@@ -59,7 +62,7 @@ namespace RuahaBlog.Controllers
             {
                 BogPost blogPost = new BogPost
                 {
-                    Name = model.Name,
+                    Name=User.Identity.Name,
                     category = model.category,
                     WriteUp = model.WriteUp,
                     Visible = model.Visible,
@@ -70,6 +73,14 @@ namespace RuahaBlog.Controllers
                 return RedirectToAction("index", new { id = blogPost.Id });
             }
             return View();
+        }
+        [HttpPost]
+        public IActionResult BlogLikes(BlogLikes Model)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+
+            }
         }
     }
 }

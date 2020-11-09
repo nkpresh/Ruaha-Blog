@@ -215,15 +215,51 @@ namespace RuahaBlog.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("RuahaBlog.Models.BogPost", b =>
+            modelBuilder.Entity("RuahaBlog.Models.BlogComments", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Email")
+                    b.Property<int>("BlogPostId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlogComments");
+                });
+
+            modelBuilder.Entity("RuahaBlog.Models.BlogLikes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlogLikes");
+                });
+
+            modelBuilder.Entity("RuahaBlog.Models.BogPost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Headline")
                         .IsRequired()
@@ -254,9 +290,8 @@ namespace RuahaBlog.Migrations
                         new
                         {
                             Id = 1,
-                            Email = "nathan@tech.com",
                             Headline = "The New Ride is Mind Blowing",
-                            Name = "Nathan",
+                            Name = "Peter",
                             Visible = true,
                             WriteUp = "The new 2020 Chevrolete Camaro is so cute; It actually came late because of the corona virus pandemic and #Endsars protest  but,hey!, thank goodness; it's here and it's not disappointing. The features are madd but yet not everybody likes it.",
                             category = 4
@@ -264,9 +299,8 @@ namespace RuahaBlog.Migrations
                         new
                         {
                             Id = 2,
-                            Email = "goody@tech.com",
                             Headline = "Some people have real problems",
-                            Name = "GoodLuck",
+                            Name = "Mum",
                             Visible = true,
                             WriteUp = "The popular musician who goes by the name Sia Fura, used to be a drug addict who was so messed up, she almost commited suicide when she lost her boy friend, but was saved by a phone call, but guess what; now she's a celebrity who has nothing to dowith drugs and she's living her best life. Her music has inspired me a lot of times and that's why I chose to write about her.In life, sometimes we face some matture problems that try to weigh us down, some of those times we don't even recieve that one phone that is supposed to save us; maybe God want's us to be our own heros to save our own lives, don't let yourself down, keep pushing#Real problems",
                             category = 0

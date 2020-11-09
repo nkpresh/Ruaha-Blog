@@ -9,6 +9,10 @@ namespace RuahaBlog.ViewModels
 {
     public class RegisterViewModel
     {
+        public int id { get; set; }
+        [Required]
+        [MaxLength(20, ErrorMessage = "Name can not exceed 20 characters")]
+        public string Name { get; set; }
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }

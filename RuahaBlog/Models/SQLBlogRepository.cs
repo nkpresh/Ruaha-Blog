@@ -15,17 +15,17 @@ namespace RuahaBlog.Models
         }
         public BogPost Creat(BogPost bogPost)
         {
-            context.blogPosts.Add(bogPost);
+            context.BlogPosts.Add(bogPost);
             context.SaveChanges();
             return bogPost;
         }
 
         public BogPost Delete(int id)
         {
-            BogPost bogPost = context.blogPosts.Find(id);
+            BogPost bogPost = context.BlogPosts.Find(id);
             if (bogPost != null)
             {
-                context.blogPosts.Remove(bogPost);
+                context.BlogPosts.Remove(bogPost);
                 context.SaveChanges();
             }
             return bogPost;
@@ -33,17 +33,17 @@ namespace RuahaBlog.Models
 
         public IEnumerable<BogPost> GetAllBlogPost()
         {
-            return context.blogPosts;
+            return context.BlogPosts;
         }
 
         public BogPost GetBlogPost(int Id)
         {
-            return context.blogPosts.Find(Id);
+            return context.BlogPosts.Find(Id);
         }
 
         public BogPost Update(BogPost blogPostChanges)
         {
-            var blogPost = context.blogPosts.Attach(blogPostChanges);
+            var blogPost = context.BlogPosts.Attach(blogPostChanges);
             blogPost.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             context.SaveChanges();
             return blogPostChanges;

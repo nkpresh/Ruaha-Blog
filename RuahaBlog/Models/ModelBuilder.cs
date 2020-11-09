@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace RuahaBlog.Models
@@ -14,9 +15,7 @@ namespace RuahaBlog.Models
                 new BogPost
                 {
                     Id = 1,
-                    Name = "Nathan",
                     category = Category.Cars,
-                    Email = "nathan@tech.com",
                     Headline = "The New Ride is Mind Blowing",
                     WriteUp = "The new 2020 Chevrolete Camaro is so cute;" +
                     " It actually came late because of the corona virus " +
@@ -24,13 +23,12 @@ namespace RuahaBlog.Models
                     "thank goodness; it's here and it's not disappointing. The " +
                     "features are madd but yet not everybody likes it.",
                     Visible = true,
+                    Name="Peter"
                 },
                 new BogPost
                 {
                     Id=2,
-                    Name="GoodLuck",
                     category=Category.Entertainment,
-                    Email="goody@tech.com",
                     Headline="Some people have real problems",
                     WriteUp="The popular musician who goes by the name Sia Fura, used to be a drug addict who was so messed up, she almost commited " +
                     "suicide when she lost her boy friend, but was saved by a phone call, but guess what; now she's a celebrity who has nothing to do" +
@@ -39,6 +37,7 @@ namespace RuahaBlog.Models
                     "phone that is supposed to save us; maybe God want's us to be our own heros to save our own lives, don't let yourself down, keep pushing" +
                     "#Real problems",
                     Visible=true,
+                    Name="Mum"
                 }
                     ) ;
         }

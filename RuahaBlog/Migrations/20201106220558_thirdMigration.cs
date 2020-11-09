@@ -2,7 +2,7 @@
 
 namespace RuahaBlog.Migrations
 {
-    public partial class second : Migration
+    public partial class thirdMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

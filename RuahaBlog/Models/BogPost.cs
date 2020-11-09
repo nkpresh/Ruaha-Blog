@@ -11,10 +11,6 @@ namespace RuahaBlog.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        [RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$",
-            ErrorMessage = "Invalid Email Format")]
-        [Display(Name="Mail Adrs")]
-        public string Email { get; set; }
         [Required]
         public bool Visible { get; set; }
         [Required]

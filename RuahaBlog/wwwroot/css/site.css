@@ -6,6 +6,7 @@
     height: 200px;
     width: auto;
 }
-input{
-    width:80%;
+button{
+    border-style:none;
+    background-color:transparent;
 }

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<BogPost>
+@inject SignInManager<IdentityUser> signedInUser;
 @{ ViewBag.Title = "Ruaha : Personal Blog"; }
 
 <!-- xxx Main SLider xxx -->
@@ -89,16 +90,20 @@
     </div>
     <div class="blog-outer">
         <div class="meta">
-            <span>@post.category.ToString()</span>
+            <span>
+                @post.category.ToString()
+            </span>
             <span class="date">@DateTime.Now</span>
             <span>
-                <a asp-controller="home" asp-action="index" data-toggle="tooltip" title="" data-original-title="25"
+                <a asp-controller="home" asp-action="index" data-toggle="tooltip" title="" data-original-title="@Model.Count()"
                    class="like-icons"><i class="fa fa-heart-o"></i></a>
             </span>
-            <span>
-                <a asp-controller="home" asp-action="index" data-toggle="tooltip" title="" data-original-title="12"
-                   class="comments-icon"><i class="fa fa-comments-o"></i></a>
-            </span>
+            <form method="post">
+                <span>
+                    <a asp-controller="home" asp-action="index" data-toggle="tooltip" title="" data-original-title="12"
+                       class="comments-icon"><i class="fa fa-comments-o"></i></a>
+                </span>
+            </form>
         </div>
         <h3 class="blog-title">@post.Headline</h3>
         <div class="admin-text">
