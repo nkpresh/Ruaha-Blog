@@ -2,7 +2,6 @@ C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\bin\Debug\netcoreapp3.1\appse
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\bin\Debug\netcoreapp3.1\RuahaBlog.exe
-C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.csprojAssemblyReference.cache
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.AssemblyInfoInputs.cache
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.AssemblyInfo.cs
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.RazorTargetAssemblyInfo.cache
@@ -81,3 +80,5 @@ C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor\Views\Home\Creat.cshtml.g.cs
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.csprojAssemblyReference.cache
+C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor\Views\Home\Details.cshtml.g.cs

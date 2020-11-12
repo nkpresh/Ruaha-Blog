@@ -6,6 +6,8 @@
     <environment include="Development">
         <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
         <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
         <script src="~/lib/bootstrap/js/bootstrap.js"></script>
     </environment>
     <environment exclude="Development">
@@ -91,19 +93,17 @@
                     <li>
                         <a asp-controller="home" asp-action="index">PROFILE</a>
                         <ul class="dropdown">
-
                             <li>
                                 <form method="post" asp-controller="Account" asp-action="Logout">
                                     <button type="submit" class="nav-link btn btn-link py-0" style="width:auto">Logout @User.Identity.Name</button>
                                 </form>
                             </li>
-                            <li>
-                                <a asp-controller="home" asp-action="profile" ></a>
-                            </li>
+                            <li><a asp-controller="Home" asp-action="Creat">CREATE POST</a></li>
+                            <li><a asp-action="contact" asp-controller="home">Contact Us</a></li>
                         </ul>
                     </li>
                     <li><a asp-controller="Home" asp-action="Creat">CREATE POST</a></li>
-                    <li><a asp-action="contact" asp-controller="home">Contact Us</a></li>
+                    <li><a asp-action="index" asp-controller="home">Contact Us</a></li>
                 </ul>
                     }
                     else

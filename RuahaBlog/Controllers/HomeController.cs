@@ -9,6 +9,7 @@ using RuahaBlog.ViewModels;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 
 namespace RuahaBlog.Controllers
 {
@@ -17,12 +18,16 @@ namespace RuahaBlog.Controllers
     {
         private readonly IBlogPostRepository _blogPostRepository;
         private readonly IWebHostEnvironment hostEnvironment;
+        private readonly AppDbContext context;
         private readonly UserManager<IdentityUser> userManager;
 
-        public HomeController(IBlogPostRepository blogPostRepository,IWebHostEnvironment hostEnvironment,UserManager<IdentityUser> userManager)
+        public HomeController(IBlogPostRepository blogPostRepository,
+            IWebHostEnvironment hostEnvironment,AppDbContext context,
+            UserManager<IdentityUser> userManager)
         {
             _blogPostRepository = blogPostRepository;
             this.hostEnvironment = hostEnvironment;
+            this.context = context;
             this.userManager = userManager;
         }
         [AllowAnonymous]
@@ -50,7 +55,10 @@ namespace RuahaBlog.Controllers
                     model.Photo.CopyTo(fileStream);
                 }
             }
+            else
+            {
 
+            }
             return uniqueFileName;
         }
 
@@ -68,19 +76,63 @@ namespace RuahaBlog.Controllers
                     Visible = model.Visible,
                     Headline = model.Title,
                     PhotoPaths = uniqueFileName,
+                    PostTime=DateTime.Now,
                 };
                 _blogPostRepository.Creat(blogPost);
                 return RedirectToAction("index", new { id = blogPost.Id });
             }
             return View();
         }
-        [HttpPost]
-        public IActionResult BlogLikes(BlogLikes Model)
+        public string blogLikes(int ID, BlogLikes Likes)
         {
+            BogPost post = context.BlogPosts.FirstOrDefault();
+            var Member = context.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
+            
             if (User.Identity.IsAuthenticated)
             {
-
+                var Username = User.Identity.Name;
+                 Likes = new BlogLikes
+                {
+                    Id = ID,
+                    BlogId = post.Id,
+                    UserId = Member.Id,
+                    LikedDate = DateTime.UtcNow,
+                    Liked=true,
+                };
+                context.BlogLikes.Add(Likes);
+                context.SaveChanges();
             }
+            return context.BlogLikes.Count().ToString();
+        }
+        [HttpPost]
+        public string UnlikeThis(int Id)
+        {
+            BogPost bogPost = context.BlogPosts.FirstOrDefault(x => x.Id == Id);
+            if (User.Identity.IsAuthenticated)
+            {
+                var Username = User.Identity.Name;
+                var Member = context.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
+                BlogLikes like = context.BlogLikes.FirstOrDefault(z => z.Id == Id && z.UserId==Member.Id);
+                context.BlogLikes.Remove(like);
+                context.SaveChanges();
+            }
+            return context.BlogLikes.Count().ToString();
+        }
+        public ViewResult Details(int Id)
+        {
+            var blogPost = _blogPostRepository.GetBlogPost(Id);
+            if (blogPost == null)
+            {
+                return View("Page Not Found", Id);
+            }
+
+            DetailsViewModel detailsViewModel = new DetailsViewModel()
+            {
+                BlogPost = blogPost,
+                PageTitle = "Details"
+            };
+            return View(detailsViewModel);
+
         }
     }
 }

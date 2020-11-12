@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RuahaBlog.Models;
 
 namespace RuahaBlog.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201109195522_seventhMigration")]
+    partial class seventhMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,12 +248,6 @@ namespace RuahaBlog.Migrations
                     b.Property<int>("BlogId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Liked")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("LikedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
 
@@ -278,9 +274,6 @@ namespace RuahaBlog.Migrations
                     b.Property<string>("PhotoPaths")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("PostTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<bool>("Visible")
                         .HasColumnType("bit");
 
@@ -301,7 +294,6 @@ namespace RuahaBlog.Migrations
                             Id = 1,
                             Headline = "The New Ride is Mind Blowing",
                             Name = "Peter",
-                            PostTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Visible = true,
                             WriteUp = "The new 2020 Chevrolete Camaro is so cute; It actually came late because of the corona virus pandemic and #Endsars protest  but,hey!, thank goodness; it's here and it's not disappointing. The features are madd but yet not everybody likes it.",
                             category = 4
@@ -311,7 +303,6 @@ namespace RuahaBlog.Migrations
                             Id = 2,
                             Headline = "Some people have real problems",
                             Name = "Mum",
-                            PostTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Visible = true,
                             WriteUp = "The popular musician who goes by the name Sia Fura, used to be a drug addict who was so messed up, she almost commited suicide when she lost her boy friend, but was saved by a phone call, but guess what; now she's a celebrity who has nothing to dowith drugs and she's living her best life. Her music has inspired me a lot of times and that's why I chose to write about her.In life, sometimes we face some matture problems that try to weigh us down, some of those times we don't even recieve that one phone that is supposed to save us; maybe God want's us to be our own heros to save our own lives, don't let yourself down, keep pushing#Real problems",
                             category = 0

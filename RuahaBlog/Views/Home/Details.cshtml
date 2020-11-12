@@ -1,0 +1,17 @@
+﻿@model DetailsViewModel
+
+@{
+    ViewBag.Title = "Ruaha Post";
+}
+
+<div  class="row justify-content-center m-3">
+    <div class="col-sm-12">
+        @*<div class="card-header">*@
+            <h1 class="text-center">@Model.BlogPost.Headline</h1>
+        @*</div>*@
+
+        <div class="card-body text-center">
+            <img src="@Model.BlogPost.PhotoPaths" class="card-deck justify-content-xl-center" />
+        </div>
+    </div>
+</div>

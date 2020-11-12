@@ -73,10 +73,8 @@ namespace RuahaBlog.Controllers
                         return RedirectToAction("Index", "home");
                     }
                 }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
-                }
+
+                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
             }
             return View(model);
         }

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,8 +10,11 @@ namespace RuahaBlog.Models
 {
     public class BlogLikes
     {
+        [Key]
         public int Id { get; set; }
         public int BlogId { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
+        public DateTime LikedDate { get; set; }
+        public bool Liked { get; set; }
     }
 }
