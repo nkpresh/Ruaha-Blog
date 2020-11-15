@@ -4,14 +4,49 @@
     ViewBag.Title = "Ruaha Post";
 }
 
-<div  class="row justify-content-center m-3">
-    <div class="col-sm-12">
-        @*<div class="card-header">*@
-            <h1 class="text-center">@Model.BlogPost.Headline</h1>
-        @*</div>*@
+<body class="wide" id="body-content">
+    <div class="container">
+        <div class="row justify-content-center m-3">
+            <div class="col-sm-12">
+                <div class="blog-post">
+                    <div class="item-thumbs">
+                        @{
+                            var photoPath = "/images/" + (Model.BlogPost.PhotoPaths ?? "error/Colorlib.jpg");
+                            <img src="@photoPath" alt="Slider Image">
 
-        <div class="card-body text-center">
-            <img src="@Model.BlogPost.PhotoPaths" class="card-deck justify-content-xl-center" />
+                        }
+
+                    </div>
+                    <div class="blog-outer">
+                        <div class="meta">
+                            <span><a href="#"><i class="fa fa-tag"></i> @Model.BlogPost.category.ToString()</a></span>
+                            <span class="date">@Model.BlogPost.PostTime</span>
+                            <span><a href="#" data-toggle="tooltip" title="" data-original-title="25" class="like-icons"><i class="fa fa-heart-o"></i></a></span>
+                            <span><a href="#" data-toggle="tooltip" title="" data-original-title="12" class="comments-icon"><i class="fa fa-comments-o"></i></a></span>
+                        </div>
+                        <h3 class="blog-title">@Model.BlogPost.Headline</h3>
+                        <div class="admin-text">
+                            <p><img src="~/images/author-thumb.jpg" alt="" class="img-circle"></p>
+                            <i>By @Model.BlogPost.Name</i>
+                        </div>
+                    </div>
+                    <div class="blog-text">
+                        @Model.BlogPost.WriteUp
+                    </div>
+                    <div class="blog-bottom">
+                        <div class="social-icons pull-left">
+                            <ul>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="pull-right"><a href="#" class="more-links">Back Home</a></div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</body>

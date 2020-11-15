@@ -80,5 +80,5 @@ C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor\Views\Home\Creat.cshtml.g.cs
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
-C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.csprojAssemblyReference.cache
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor\Views\Home\Details.cshtml.g.cs
+C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.csprojAssemblyReference.cache

@@ -31,11 +31,20 @@ namespace RuahaBlog.Models
             return bogPost;
         }
 
+        public IEnumerable<BlogLikes> GetAllBlogLikes()
+        {
+            return context.BlogLikes;
+        }
         public IEnumerable<BogPost> GetAllBlogPost()
         {
             return context.BlogPosts;
         }
-
+        public BlogLikes CreateLikes(BlogLikes like)
+        {
+            context.BlogLikes.Add(like);
+            context.SaveChanges();
+            return like;
+        }
         public BogPost GetBlogPost(int Id)
         {
             return context.BlogPosts.Find(Id);
@@ -48,5 +57,6 @@ namespace RuahaBlog.Models
             context.SaveChanges();
             return blogPostChanges;
         }
+
     }
 }

@@ -83,26 +83,26 @@ namespace RuahaBlog.Controllers
             }
             return View();
         }
-        public string blogLikes(int ID, BlogLikes Likes)
+        [HttpGet][HttpPost]
+        public IActionResult blogLikes(int Id)
         {
-            BogPost post = context.BlogPosts.FirstOrDefault();
             var Member = context.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
-            
+            LikePostViewModel likePostView = new LikePostViewModel();
             if (User.Identity.IsAuthenticated)
             {
+                
                 var Username = User.Identity.Name;
-                 Likes = new BlogLikes
+                BlogLikes likes = new BlogLikes
                 {
-                    Id = ID,
-                    BlogId = post.Id,
+                    BlogId =Id,
                     UserId = Member.Id,
                     LikedDate = DateTime.UtcNow,
-                    Liked=true,
+                    Liked = true,
                 };
-                context.BlogLikes.Add(Likes);
-                context.SaveChanges();
+                _blogPostRepository.CreateLikes(likes);
             }
-            return context.BlogLikes.Count().ToString();
+
+            return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         public string UnlikeThis(int Id)

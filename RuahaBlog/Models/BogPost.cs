@@ -20,7 +20,6 @@ namespace RuahaBlog.Models
         public string PhotoPaths { get; set; }
         public Category category { get; set; }
         public DateTime PostTime { get; set; }
-
     }
     public enum Category
     {

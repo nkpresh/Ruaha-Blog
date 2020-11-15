@@ -23,7 +23,7 @@ namespace RuahaBlog.Models
                     "thank goodness; it's here and it's not disappointing. The " +
                     "features are madd but yet not everybody likes it.",
                     Visible = true,
-                    Name="Peter"
+                    Name="Peter",
                 },
                 new BogPost
                 {

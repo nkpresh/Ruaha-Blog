@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Views\Shared\twitter\jquery.tweet.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\css\fonts\fontawesome-webfonte0a5.svg" />
     <None Include="wwwroot\css\fonts\fontawesome-webfonte0a5.woff2" />
     <None Include="wwwroot\lib\bootstrap\css\bootstrap-grid.css" />

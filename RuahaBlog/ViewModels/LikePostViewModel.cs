@@ -12,20 +12,8 @@ namespace RuahaBlog.ViewModels
     public class LikePostViewModel
     {
         public int ID { get; set; }
-        public int BlogID { get; set; }
+        public BogPost Blog { get; set; }
         public int UserID { get; set; }
-
-        private readonly UserManager<IdentityUser> user;
-        private readonly BlogLikes likes;
-        private readonly AppDbContext context;
-
-        public LikePostViewModel(UserManager<IdentityUser> user, BlogLikes likes,
-            AppDbContext context)
-        {
-            this.user = user;
-            this.likes = likes;
-            this.context = context;
-        }
-
+ 
     }
 }

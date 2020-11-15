@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿
 @inject SignInManager<IdentityUser> signInManager;
 <html class="no-js">
 <head>
@@ -82,43 +82,43 @@
             </div>
         </div>
         <div id="nav-wrap">
-                <div id="menuzord" class="menuzord red pull-left">
-                    <a href="javascript:void(0)" class="menuzord-brand"><img src="~/images/logo.png" alt="Ruaha Logo"></a>
-                    @if(signInManager.IsSignedIn(User))
-                    { 
-                <ul class="menuzord-menu">
-                    <li class="active">
-                        <a asp-controller="home" asp-action="index">Home</a>
-                    </li>
-                    <li>
-                        <a asp-controller="home" asp-action="index">PROFILE</a>
-                        <ul class="dropdown">
-                            <li>
-                                <form method="post" asp-controller="Account" asp-action="Logout">
-                                    <button type="submit" class="nav-link btn btn-link py-0" style="width:auto">Logout @User.Identity.Name</button>
-                                </form>
-                            </li>
-                            <li><a asp-controller="Home" asp-action="Creat">CREATE POST</a></li>
-                            <li><a asp-action="contact" asp-controller="home">Contact Us</a></li>
-                        </ul>
-                    </li>
-                    <li><a asp-controller="Home" asp-action="Creat">CREATE POST</a></li>
-                    <li><a asp-action="index" asp-controller="home">Contact Us</a></li>
-                </ul>
-                    }
-                    else
-                    {
-                        <ul class="menuzord-menu">
-                            <li>
-                                <a asp-controller="account" asp-action="register">Register</a>
-                            </li>
-                            <li>
-                                <a asp-controller="account" asp-action="login">Login</a>
-                            </li>
-                        </ul>
-                    }
+            <div id="menuzord" class="menuzord red pull-left">
+                <a href="javascript:void(0)" class="menuzord-brand"><img src="~/images/logo.png" alt="Ruaha Logo"></a>
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <ul class="menuzord-menu">
+                        <li class="active">
+                            <a asp-controller="home" asp-action="index">Home</a>
+                        </li>
+                        <li>
+                            <a asp-controller="home" asp-action="index">PROFILE</a>
+                            <ul class="dropdown">
+                                <li>
+                                    <form method="post"  asp-controller="Account" asp-action="Logout">
+                                        <button type="submit" class="nav-link btn btn-link py-0" style="width:auto">Logout @User.Identity.Name</button>
+                                    </form>
+                                </li>
+                                <li><a asp-controller="Home" asp-action="Creat">CREATE POST</a></li>
+                                <li><a asp-action="contact" asp-controller="home">Contact Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a asp-controller="Home" asp-action="Creat">CREATE POST</a></li>
+                        <li><a asp-action="index" asp-controller="home">Contact Us</a></li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="menuzord-menu">
+                        <li>
+                            <a asp-controller="account" asp-action="register">Register</a>
+                        </li>
+                        <li>
+                            <a asp-controller="account" asp-action="login">Login</a>
+                        </li>
+                    </ul>
+                }
 
-                </div>
+            </div>
         </div>
         <div class="clearfix"></div>
     </header>
@@ -126,142 +126,182 @@
     <div>
         @RenderBody()
     </div>
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: true)
+    }
     <footer>
         <div class="widget-footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-4">
-                        <div class="footer-dark">
-                            <div class="text-footer">
-                                <div class="footer-logo"><img src="images/logo.png" alt=""></div>
-                                <div><a href="#">Ruaha Blog WordPress Theme</a> is a Minimal, elegant looking theme that is perfect for personal, corporate, business, travel blog, photography, fashion blogging and more. Built with <a target="_blank" href="http://getbootstrap.com/">Bootstrap 3.3.2 Framework</a>, it is totally responsive and easy to customize using tons of shortcodes. </div>
-
-                                <div class="social-icons footer">
-                                    <ul>
-                                        <li><a data-original-title="Twitter" title="" data-toggle="tooltip" href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a data-original-title="Facebook" title="" data-toggle="tooltip" href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a data-original-title="Pinterest" title="" data-toggle="tooltip" href="#"><i class="fa fa-pinterest"></i></a></li>
-                                        <li><a data-original-title="Google Plus" title="" data-toggle="tooltip" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    </ul>
-                                </div>
+                    <div class="col-sm-4 about-author">
+                        <div class="author-image">
+                            <img src="images/faces_1.jpg" alt="" class="img-circle">
+                        </div>
+                        <div class="author-intro">
+                            <h3>About Me</h3>
+                            <p>Proin at ante sed quam malesuada rutrum non ut orci. Aenean ullamcorper placerat erat, et porttitor velit aliquam vitae.</p>
+                            <div class="social-icons">
+                                <ul>
+                                    <li><a href="#" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-4">
-                                <div class="sidebar-head"><span>Categories</span></div>
-                                <ul class="category">
-                                    <li>
-                                        <div class="cat-desc">
-                                            <div class="category-details">
-                                                <span><a href="#">Entertainment</a></span>
-                                            </div>
-                                            <div class="dots"></div>
-                                            <div class="category-links">
-                                                <span>(10)</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cat-desc">
-                                            <div class="category-details">
-                                                <span><a href="#">Sports</a></span>
-                                            </div>
-                                            <div class="dots"></div>
-                                            <div class="category-links">
-                                                <span>(05)</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cat-desc">
-                                            <div class="category-details">
-                                                <span><a href="#">Travel</a></span>
-                                            </div>
-                                            <div class="dots"></div>
-                                            <div class="category-links">
-                                                <span>(15)</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cat-desc">
-                                            <div class="category-details">
-                                                <span><a href="#">Lifestyle</a></span>
-                                            </div>
-                                            <div class="dots"></div>
-                                            <div class="category-links">
-                                                <span>(25)</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cat-desc">
-                                            <div class="category-details">
-                                                <span><a href="#">Jobs</a></span>
-                                            </div>
-                                            <div class="dots"></div>
-                                            <div class="category-links">
-                                                <span>(105)</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cat-desc">
-                                            <div class="category-details">
-                                                <span><a href="#">Movies</a></span>
-                                            </div>
-                                            <div class="dots"></div>
-                                            <div class="category-links">
-                                                <span>(02)</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cat-desc">
-                                            <div class="category-details">
-                                                <span><a href="#">Music</a></span>
-                                            </div>
-                                            <div class="dots"></div>
-                                            <div class="category-links">
-                                                <span>(07)</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                    <div class="col-sm-4">
+                        <div class="sidebar-head"><span>From Twitter</span></div>
+                        <div class="tweet-stream"></div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="sidebar-head"><span>Newsletter Signup</span></div>
+                        <div class="">
+                            <p>Sign up to receive latest updates with Ruaha Blog!</p>
+                            <div class="newsletter-input">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Email Here">
                             </div>
-                            <div class="col-md-6 col-sm-4">
-                                <div class="sidebar-head"><span>Recent Comments</span></div>
-                                <div class="">
-                                    <ul class="sidebar-post">
-                                        <li>
-                                            <div class="post-text">
-                                                <h4><a href="#">Light House - The Beauty Of Paris</a></h4>
-                                                <p>Nunc tristique tellus quam, id ultrices urna rhoncus non..</p>
-                                                <div class="post-date">
-                                                    <i class="fa fa-clock-o"></i> 21 Sep, 2015
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#"><i class="fa fa-comments-o"></i>15</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="post-text">
-                                                <h4><a href="#">The Iconic View of Hiroshima, Japan</a></h4>
-                                                <p>Nunc tristique tellus quam, id ultrices urna rhoncus non..</p>
-                                                <div class="post-date">
-                                                    <i class="fa fa-clock-o"></i> 21 Sep, 2015
-                                                </div>
-                                                <div class="post-date">
-                                                    <a href="#"><i class="fa fa-comments-o"></i>15</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div class="newsletter-btn">
+                                <button type="submit" class="btn-default">Send <i class="fa fa-check-circle"></i></button>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <hr>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="sidebar-head"><span>Recent Posts</span></div>
+                        <div class="">
+                            <ul class="sidebar-post">
+                                <li>
+
+                                    <div class="post-text">
+                                        <h4><a href="#">Light House - The Beauty Of Paris</a></h4>
+                                        <p>Nunc tristique tellus quam, id ultrices urna rhoncus non..</p>
+                                        <div class="post-date">
+                                            <i class="fa fa-clock-o"></i> 21 Sep, 2015
+                                        </div>
+                                        <div class="post-date">
+                                            <a href="#"><i class="fa fa-comments-o"></i>15</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+
+                                    <div class="post-text">
+                                        <h4><a href="#">The Iconic View of Hiroshima, Japan</a></h4>
+                                        <p>Nunc tristique tellus quam, id ultrices urna rhoncus non..</p>
+                                        <div class="post-date">
+                                            <i class="fa fa-clock-o"></i> 21 Sep, 2015
+                                        </div>
+                                        <div class="post-date">
+                                            <a href="#"><i class="fa fa-comments-o"></i>15</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="sidebar-head"><span>Categories</span></div>
+                        <div>
+                            <ul class="category">
+                                <li>
+                                    <div class="cat-desc">
+                                        <div class="category-details">
+                                            <span><a href="#">Entertainment</a></span>
+                                        </div>
+                                        <div class="dots"></div>
+                                        <div class="category-links">
+                                            <span>(10)</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="cat-desc">
+                                        <div class="category-details">
+                                            <span><a href="#">Sports</a></span>
+                                        </div>
+                                        <div class="dots"></div>
+                                        <div class="category-links">
+                                            <span>(05)</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="cat-desc">
+                                        <div class="category-details">
+                                            <span><a href="#">Travel</a></span>
+                                        </div>
+                                        <div class="dots"></div>
+                                        <div class="category-links">
+                                            <span>(15)</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="cat-desc">
+                                        <div class="category-details">
+                                            <span><a href="#">Lifestyle</a></span>
+                                        </div>
+                                        <div class="dots"></div>
+                                        <div class="category-links">
+                                            <span>(25)</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="cat-desc">
+                                        <div class="category-details">
+                                            <span><a href="#">Jobs</a></span>
+                                        </div>
+                                        <div class="dots"></div>
+                                        <div class="category-links">
+                                            <span>(105)</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="cat-desc">
+                                        <div class="category-details">
+                                            <span><a href="#">Movies</a></span>
+                                        </div>
+                                        <div class="dots"></div>
+                                        <div class="category-links">
+                                            <span>(02)</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="cat-desc">
+                                        <div class="category-details">
+                                            <span><a href="#">Music</a></span>
+                                        </div>
+                                        <div class="dots"></div>
+                                        <div class="category-links">
+                                            <span>(07)</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="sidebar-head"><span>Popular Tags</span></div>
+                        <div class="tags">
+                            <a href="#">Music</a>
+                            <a href="#">New</a>
+                            <a href="#">Outstanding</a>
+                            <a href="#">Quote</a>
+                            <a href="#">Web</a>
+                            <a href="#">Sports</a>
+                            <a href="#">Travel</a>
+                            <a href="#">Shortcode</a>
+                            <a href="#">WordPress</a>
+                            <a href="#">Entertainment</a>
+                            <a href="#">Lifestyle</a>
+                            <a href="#">Movies</a>
                         </div>
                     </div>
                 </div>
@@ -274,10 +314,65 @@
             </div>
         </div>
     </footer>
-    @if (IsSectionDefined("Scripts"))
-    {
-        @RenderSection("Scripts", required: true)
-    }
+    <!-- xxx Footer End xxx -->
+    <!-- xxx Back To Top xxx -->
+    <div id="back-top">
+        <a class="img-circle" href="#top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+    </div>
+    <!-- xxx End xxx -->
+    <!-- xxx Style Switcher (Only For Demo) xxx -->
+    <div class="styleswitcher">
+        <div class="arrow-box"><a class="switch-button open"><i class="fa fa-gear fa-2x"></i></a> </div>
+        <h6>Color Skins</h6>
+        <ul class="color-scheme">
+            <li><a class="default" rel="css/theme/default.css" href="#"></a></li>
+            <li><a class="apple" rel="css/theme/apple.css" href="#"></a></li>
+            <li><a class="pink" rel="css/theme/pink.css" href="#"></a></li>
+            <li><a class="teal" rel="css/theme/teal.css" href="#"></a></li>
+            <li><a class="gold" rel="css/theme/gold.css" href="#"></a></li>
+            <li><a class="downy" rel="css/theme/downy.css" href="#"></a></li>
+            <li><a class="atlantis" rel="css/theme/atlantis.css" href="#"></a></li>
+            <li><a class="red" rel="css/theme/red.css" href="#"></a></li>
+            <li><a class="violet" rel="css/theme/violet.css" href="#"></a></li>
+            <li><a class="pomegranate" rel="css/theme/pomegranate.css" href="#"></a></li>
+            <li><a class="violet-red" rel="css/theme/violet-red.css" href="#"></a></li>
+            <li><a class="mexican-red" rel="css/theme/mexican-red.css" href="#"></a></li>
+            <li><a class="victoria" rel="css/theme/victoria.css" href="#"></a></li>
+            <li><a class="orient" rel="css/theme/orient.css" href="#"></a></li>
+            <li><a class="jgger" rel="css/theme/jgger.css" href="#"></a></li>
+            <li><a class="de-york" rel="css/theme/de-york.css" href="#"></a></li>
+            <li><a class="blaze-orange" rel="css/theme/blaze-orange.css" href="#"></a></li>
+            <li><a class="hot-pink" rel="css/theme/hot-pink.css" href="#"></a></li>
+        </ul>
+    </div>
+    <!-- xxx Style Switcher (Only For Demo) xxx -->
+    <!-- JQuery Plugins-->
+    <script type="text/javascript" src="js/jquery-min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="js/menuzord.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+    <script type='text/javascript' src="js/jflickrfeed.min.js"></script>
+    <script type='text/javascript' src="js/jquery.fancybox.js"></script>
+    <script type='text/javascript' src="js/jquery.validate.min.js"></script>
+    <script type='text/javascript' src="twitter/jquery.tweet.js"></script>
+
+    <!-- JQuery Map Plugin -->
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="js/jquery.gmap.min.js"></script>
+
+    <script type='text/javascript' src="js/site-custom.js"></script>
+
+    <script>
+        var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+        (function (d, t) {
+            var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            g.src = '../../../www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
+    </script>
 </body>
 
 <!-- Mirrored from mannatstudio.com/html/ruaha/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Oct 2020 17:42:25 GMT -->
