@@ -18,33 +18,43 @@ namespace RuahaBlog.Controllers
     public class HomeController : Controller
     {
         private readonly IBlogPostRepository _blogPostRepository;
+
         private readonly IWebHostEnvironment hostEnvironment;
+
         private readonly AppDbContext context;
+
         private readonly UserManager<IdentityUser> userManager;
+
         private readonly ILikeRepository _likePostRepository;
+        private readonly ICommentRepository _commentRepository;
 
         public HomeController(IBlogPostRepository blogPostRepository,
             IWebHostEnvironment hostEnvironment, AppDbContext context,
-            UserManager<IdentityUser> userManager, ILikeRepository LikePostRepository)
+            UserManager<IdentityUser> userManager, ILikeRepository LikePostRepository,
+            ICommentRepository commentRepository)
+
         {
             _blogPostRepository = blogPostRepository;
             this.hostEnvironment = hostEnvironment;
             this.context = context;
             this.userManager = userManager;
             _likePostRepository = LikePostRepository;
+            _commentRepository = commentRepository;
         }
         [AllowAnonymous]
         public IActionResult Index()
         {
             var model = _blogPostRepository.GetAllBlogPost();
+            context.SaveChanges();
             return View(model);
         }
+
         [HttpGet]
         public IActionResult Creat()
         {
             return View();
         }
-
+        
         private string ProcessUploadedFile(CreatViewModel model)
         {
             string uniqueFileName = null;
@@ -85,12 +95,12 @@ namespace RuahaBlog.Controllers
             }
             return View();
         }
+
         [HttpGet]
         [HttpPost]
         public IActionResult BlogLikes(int Id)
         {
             var Member = context.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
-            LikePostViewModel likePostView = new LikePostViewModel();
             if (User.Identity.IsAuthenticated)
             {
                 var Username = User.Identity.Name;
@@ -107,7 +117,7 @@ namespace RuahaBlog.Controllers
                 }
                 else
                 {
-                    BlogLikes postLike = context.BlogLikes.Find(likes.BlogId);
+                    BlogLikes postLike = context.BlogLikes.FirstOrDefault(x => x.BlogId == Id);
                     if (context.BlogLikes.Contains(postLike))
                     {
                         if (postLike.UserId == likes.UserId)
@@ -126,8 +136,13 @@ namespace RuahaBlog.Controllers
                     }
                 }
             }
+            var like = context.BlogLikes.Where(x => x.BlogId == Id);
+            var post = context.BlogPosts.FirstOrDefault(x => x.Id == Id);
+            post.NumberOfLikes = like.Count();
+            context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+
         [HttpGet]
         [HttpPost]
         public IActionResult UnlikeThis(int BlogId)
@@ -144,6 +159,7 @@ namespace RuahaBlog.Controllers
             //}
             return RedirectToAction("Index", "Home");
         }
+
         public ViewResult Details(int Id)
         {
             var blogPost = _blogPostRepository.GetBlogPost(Id);

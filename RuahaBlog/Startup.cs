@@ -39,6 +39,8 @@ namespace RuahaBlog
             services.AddMvc();
             services.AddScoped<IBlogPostRepository, SQLBlogRepository>();
             services.AddScoped<ILikeRepository, SQLLikeRepositry>();
+            services.AddScoped<ICommentRepository, SQLCommentRepository>();
+            services.AddTransient<BlogComments>();
             services.AddSession(o =>
             {
                 o.IOTimeout = TimeSpan.FromMinutes(2);

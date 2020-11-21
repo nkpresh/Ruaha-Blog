@@ -103,12 +103,15 @@
                                 <div class="meta">
                                     <span><a href="#"><i class="fa fa-tag"></i> @Post.Category</a></span>
                                     <span class="date">@Post.PostTime</span>
-                                    <label><i>@Post.NumberOfLikes</i> Likes</label>
-                                    <a asp-controller="Home" asp-action="BlogLikes" asp-route-Id="@Post.Id" data-toggle="tooltip" title="" data-original-title="Twitter" class="like-icons">
-                                        <i class="fa fa-heart-o"></i>
-                                    </a>
                                     <span>
-                                        <a asp-controller="Home" asp-action="UnlikeThis" 
+                                        <label><i>@Post.NumberOfLikes</i> Likes</label>
+                                        <a asp-controller="Home" asp-action="BlogLikes" asp-route-Id="@Post.Id" data-toggle="tooltip" title="" data-original-title="Twitter" class="like-icons">
+                                            <i class="fa fa-heart-o"></i>
+                                        </a>
+                                    </span>
+                                    <span>
+                                        <label><i>@Post.NumberOfLikes</i> Likes</label>
+                                        <a asp-controller="Home" asp-action="Details"
                                            asp-route-BlogId="@Post.Id" data-toggle="tooltip" title="" data-original-title="12" class="comments-icon"><i class="fa fa-comments-o"></i></a>
                                     </span>
                                 </div>

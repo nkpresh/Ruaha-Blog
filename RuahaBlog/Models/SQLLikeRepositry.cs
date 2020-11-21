@@ -26,17 +26,17 @@ namespace RuahaBlog.Models
         }
         public int GetNumberOfLikes(int Number)
         {
-            int Count;
-            if (context.BlogLikes.Where(x => x.BlogId == Number).Count() != 0)
-            {
+            int CountIt;
+            //if (context.BlogLikes.Where(x => x.BlogId == Number).Count() != 0)
+            //{
                 var post = context.BlogLikes.Where(x => x.BlogId == Number);
-                Count = post.Count();
-            }
-            else
-            {
-                Count = 0;
-            }
-            return Count;
+            //post.Count();
+            //}
+            //else
+            //{
+                CountIt = 1;
+            //}
+            return CountIt;
         }
         public BlogLikes RemoveLike(BlogLikes likeToRemve)
         {

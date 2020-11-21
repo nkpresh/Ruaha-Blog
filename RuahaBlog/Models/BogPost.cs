@@ -21,6 +21,7 @@ namespace RuahaBlog.Models
         public Category Category { get; set; }
         public DateTime PostTime { get; set; }
         public int NumberOfLikes { get; set; }
+        public int NumberOfComments { get; set; }
 
     }
     public enum Category
