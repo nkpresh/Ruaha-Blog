@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RuahaBlog.Migrations
 {
-    public partial class newMigration : Migration
+    public partial class First : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,20 +47,53 @@ namespace RuahaBlog.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "blogPosts",
+                name: "BlogComments",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    BlogPostId = table.Column<int>(nullable: false),
+                    Body = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BlogComments", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BlogLikes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BlogId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
+                    Liked = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BlogLikes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BlogPosts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
                     Visible = table.Column<bool>(nullable: false),
                     Headline = table.Column<string>(nullable: false),
                     WriteUp = table.Column<string>(nullable: false),
                     PhotoPaths = table.Column<string>(nullable: true),
-                    category = table.Column<int>(nullable: false)
+                    Category = table.Column<int>(nullable: false),
+                    PostTime = table.Column<DateTime>(nullable: false),
+                    NumberOfLikes = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_blogPosts", x => x.Id);
+                    table.PrimaryKey("PK_BlogPosts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -132,6 +165,7 @@ namespace RuahaBlog.Migrations
                     UserId = table.Column<string>(nullable: false),
                     RoleId = table.Column<string>(nullable: false)
                 },
+
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
@@ -170,14 +204,14 @@ namespace RuahaBlog.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "blogPosts",
-                columns: new[] { "Id", "Headline", "PhotoPaths", "Visible", "WriteUp", "category" },
-                values: new object[] { 1, "The New Ride is Mind Blowing", null, true, "The new 2020 Chevrolete Camaro is so cute; It actually came late because of the corona virus pandemic and #Endsars protest  but,hey!, thank goodness; it's here and it's not disappointing. The features are madd but yet not everybody likes it.", 4 });
+                table: "BlogPosts",
+                columns: new[] { "Id", "Category", "Headline", "Name", "NumberOfLikes", "PhotoPaths", "PostTime", "Visible", "WriteUp" },
+                values: new object[] { 1, 4, "The New Ride is Mind Blowing", "Peter", 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "The new 2020 Chevrolete Camaro is so cute; It actually came late because of the corona virus pandemic and #Endsars protest  but,hey!, thank goodness; it's here and it's not disappointing. The features are madd but yet not everybody likes it." });
 
             migrationBuilder.InsertData(
-                table: "blogPosts",
-                columns: new[] { "Id", "Headline", "PhotoPaths", "Visible", "WriteUp", "category" },
-                values: new object[] { 2, "Some people have real problems", null, true, "The popular musician who goes by the name Sia Fura, used to be a drug addict who was so messed up, she almost commited suicide when she lost her boy friend, but was saved by a phone call, but guess what; now she's a celebrity who has nothing to dowith drugs and she's living her best life. Her music has inspired me a lot of times and that's why I chose to write about her.In life, sometimes we face some matture problems that try to weigh us down, some of those times we don't even recieve that one phone that is supposed to save us; maybe God want's us to be our own heros to save our own lives, don't let yourself down, keep pushing#Real problems", 0 });
+                table: "BlogPosts",
+                columns: new[] { "Id", "Category", "Headline", "Name", "NumberOfLikes", "PhotoPaths", "PostTime", "Visible", "WriteUp" },
+                values: new object[] { 2, 0, "Some people have real problems", "Mum", 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "The popular musician who goes by the name Sia Fura, used to be a drug addict who was so messed up, she almost commited suicide when she lost her boy friend, but was saved by a phone call, but guess what; now she's a celebrity who has nothing to dowith drugs and she's living her best life. Her music has inspired me a lot of times and that's why I chose to write about her.In life, sometimes we face some matture problems that try to weigh us down, some of those times we don't even recieve that one phone that is supposed to save us; maybe God want's us to be our own heros to save our own lives, don't let yourself down, keep pushing#Real problems" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -237,7 +271,13 @@ namespace RuahaBlog.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "blogPosts");
+                name: "BlogComments");
+
+            migrationBuilder.DropTable(
+                name: "BlogLikes");
+
+            migrationBuilder.DropTable(
+                name: "BlogPosts");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

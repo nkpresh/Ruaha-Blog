@@ -14,7 +14,6 @@ namespace RuahaBlog.Models
         {
 
         }
-
         public DbSet<BogPost> BlogPosts { get; set; }
         protected override void OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder builder)
         {

@@ -10,8 +10,8 @@ using RuahaBlog.Models;
 namespace RuahaBlog.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201109212011_eightMigration")]
-    partial class eightMigration
+    [Migration("20201121071209_First")]
+    partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -248,6 +248,9 @@ namespace RuahaBlog.Migrations
                     b.Property<int>("BlogId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("Liked")
+                        .HasColumnType("bit");
+
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
 
@@ -263,6 +266,9 @@ namespace RuahaBlog.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Category")
+                        .HasColumnType("int");
+
                     b.Property<string>("Headline")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -271,8 +277,14 @@ namespace RuahaBlog.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("NumberOfLikes")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhotoPaths")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("PostTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("Visible")
                         .HasColumnType("bit");
@@ -280,9 +292,6 @@ namespace RuahaBlog.Migrations
                     b.Property<string>("WriteUp")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("category")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -292,20 +301,24 @@ namespace RuahaBlog.Migrations
                         new
                         {
                             Id = 1,
+                            Category = 4,
                             Headline = "The New Ride is Mind Blowing",
                             Name = "Peter",
+                            NumberOfLikes = 0,
+                            PostTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Visible = true,
-                            WriteUp = "The new 2020 Chevrolete Camaro is so cute; It actually came late because of the corona virus pandemic and #Endsars protest  but,hey!, thank goodness; it's here and it's not disappointing. The features are madd but yet not everybody likes it.",
-                            category = 4
+                            WriteUp = "The new 2020 Chevrolete Camaro is so cute; It actually came late because of the corona virus pandemic and #Endsars protest  but,hey!, thank goodness; it's here and it's not disappointing. The features are madd but yet not everybody likes it."
                         },
                         new
                         {
                             Id = 2,
+                            Category = 0,
                             Headline = "Some people have real problems",
                             Name = "Mum",
+                            NumberOfLikes = 0,
+                            PostTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Visible = true,
-                            WriteUp = "The popular musician who goes by the name Sia Fura, used to be a drug addict who was so messed up, she almost commited suicide when she lost her boy friend, but was saved by a phone call, but guess what; now she's a celebrity who has nothing to dowith drugs and she's living her best life. Her music has inspired me a lot of times and that's why I chose to write about her.In life, sometimes we face some matture problems that try to weigh us down, some of those times we don't even recieve that one phone that is supposed to save us; maybe God want's us to be our own heros to save our own lives, don't let yourself down, keep pushing#Real problems",
-                            category = 0
+                            WriteUp = "The popular musician who goes by the name Sia Fura, used to be a drug addict who was so messed up, she almost commited suicide when she lost her boy friend, but was saved by a phone call, but guess what; now she's a celebrity who has nothing to dowith drugs and she's living her best life. Her music has inspired me a lot of times and that's why I chose to write about her.In life, sometimes we face some matture problems that try to weigh us down, some of those times we don't even recieve that one phone that is supposed to save us; maybe God want's us to be our own heros to save our own lives, don't let yourself down, keep pushing#Real problems"
                         });
                 });
 

@@ -15,7 +15,7 @@ namespace RuahaBlog.Models
                 new BogPost
                 {
                     Id = 1,
-                    category = Category.Cars,
+                    Category = Category.Cars,
                     Headline = "The New Ride is Mind Blowing",
                     WriteUp = "The new 2020 Chevrolete Camaro is so cute;" +
                     " It actually came late because of the corona virus " +
@@ -28,7 +28,7 @@ namespace RuahaBlog.Models
                 new BogPost
                 {
                     Id=2,
-                    category=Category.Entertainment,
+                    Category=Category.Entertainment,
                     Headline="Some people have real problems",
                     WriteUp="The popular musician who goes by the name Sia Fura, used to be a drug addict who was so messed up, she almost commited " +
                     "suicide when she lost her boy friend, but was saved by a phone call, but guess what; now she's a celebrity who has nothing to do" +

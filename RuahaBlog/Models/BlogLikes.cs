@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace RuahaBlog.Models
 {
+    
     public class BlogLikes
     {
-        [Key]
         public int Id { get; set; }
         public int BlogId { get; set; }
         public string UserId { get; set; }
-        public DateTime LikedDate { get; set; }
         public bool Liked { get; set; }
     }
 }

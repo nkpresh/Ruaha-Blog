@@ -18,8 +18,10 @@ namespace RuahaBlog.Models
         [Required]
         public string WriteUp { get; set; }
         public string PhotoPaths { get; set; }
-        public Category category { get; set; }
+        public Category Category { get; set; }
         public DateTime PostTime { get; set; }
+        public int NumberOfLikes { get; set; }
+
     }
     public enum Category
     {

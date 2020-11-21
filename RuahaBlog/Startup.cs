@@ -38,23 +38,30 @@ namespace RuahaBlog
             services.AddMvc(Options => Options.EnableEndpointRouting = false);
             services.AddMvc();
             services.AddScoped<IBlogPostRepository, SQLBlogRepository>();
+            services.AddScoped<ILikeRepository, SQLLikeRepositry>();
+            services.AddSession(o =>
+            {
+                o.IOTimeout = TimeSpan.FromMinutes(2);
+            });
+            services.AddMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
-            //    app.UseExceptionHandler("/Error");
-            //    app.UseStatusCodePagesWithReExecute("/Error/{0}");
-            //}
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+            }
 
             app.UseStaticFiles();
             app.UseAuthentication();
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");

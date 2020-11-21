@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<BogPost>
-@inject IEnumerable<BlogComments> Comments;
 @inject SignInManager<IdentityUser> signedInUser;
 
 @{ 
@@ -83,49 +82,58 @@
 </section>
 
 <body class="wide" id="body-content">
+
+    <div>
+        <i>
+            
+        </i>
+    </div>
     <div class="container">
+
         <div class="row justify-content-center m-3">
             <div class="col-sm-12">
-                    @{ foreach (var Post in Model)
-                        {
-                            var photoPath = "/images/" + (Post.PhotoPaths ?? "error/Colorlib.jpg");
-
-                            <div class="blog-post">
-                                <div class="item-thumbs">
-                                    <img src="@photoPath" />
+                @{ foreach (var Post in Model)
+                    {
+                        var photoPath = "/images/" + (Post.PhotoPaths ?? "error/Colorlib.jpg");
+                        <div class="blog-post">
+                            <div class="item-thumbs">
+                                <img src="@photoPath" />
+                            </div>
+                            <div class="blog-outer">
+                                <div class="meta">
+                                    <span><a href="#"><i class="fa fa-tag"></i> @Post.Category</a></span>
+                                    <span class="date">@Post.PostTime</span>
+                                    <label><i>@Post.NumberOfLikes</i> Likes</label>
+                                    <a asp-controller="Home" asp-action="BlogLikes" asp-route-Id="@Post.Id" data-toggle="tooltip" title="" data-original-title="Twitter" class="like-icons">
+                                        <i class="fa fa-heart-o"></i>
+                                    </a>
+                                    <span>
+                                        <a asp-controller="Home" asp-action="UnlikeThis" 
+                                           asp-route-BlogId="@Post.Id" data-toggle="tooltip" title="" data-original-title="12" class="comments-icon"><i class="fa fa-comments-o"></i></a>
+                                    </span>
                                 </div>
-                                <div class="blog-outer">
-                                    <div class="meta">
-                                        <span><a href="#"><i class="fa fa-tag"></i> @Post.category</a></span>
-                                        <span class="date">@Post.PostTime</span>
-                                            <label><i></i> Likes</label>
-                                            <a asp-controller="Home" asp-action="blogLikes" asp-route-Id="@Post.Id" data-toggle="tooltip" title="" data-original-title="Twitter" class="like-icons">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        <form><button type="submit" data-toggle="tooltip" title="" data-original-title="12" class="comments-icon"><i class="fa fa-comments-o"></i></button></form>
-                                    </div>
-                                    <h3 class="blog-title"><a asp-controller="Home" asp-action="Details" asp-route-Id="@Post.Id">@Post.Headline</a></h3>
-                                    <div class="admin-text">
-                                        <p><img src="images/author-thumb.jpg" alt="" class="img-circle"></p>
-                                        <i>By <a href="#">@Post.Name</a></i>
-                                    </div>
-                                </div>
-                                <div class="blog-bottom">
-                                    <div class="social-icons pull-left">
-                                        <ul>
-                                            <li><a href="#" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#" data-toggle="tooltip" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-                                            <li><a href="#" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pull-right"><a asp-controller="Home" asp-action="Details" asp-route-Id="@Post.Id" class="more-links">Read More</a></div>
-                                    <div class="clearfix"></div>
+                                <h3 class="blog-title"><a asp-controller="Home" asp-action="Details" asp-route-Id="@Post.Id">@Post.Headline</a></h3>
+                                <div class="admin-text">
+                                    <p><img src="images/author-thumb.jpg" alt="" class="img-circle"></p>
+                                    <i>By <a href="#">@Post.Name</a></i>
                                 </div>
                             </div>
-                        }
-                    };
-                </div>
+                            <div class="blog-bottom">
+                                <div class="social-icons pull-left">
+                                    <ul>
+                                        <li><a href="#" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#" data-toggle="tooltip" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a href="#" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pull-right"><a asp-controller="Home" asp-action="Details" asp-route-Id="@Post.Id" class="more-links">Read More</a></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    }
+                };
+            </div>
             </div>
         </div>
         </body>

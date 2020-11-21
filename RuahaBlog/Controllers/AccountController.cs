@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using RuahaBlog.Models;
 using RuahaBlog.ViewModels;
 
@@ -31,13 +33,12 @@ namespace RuahaBlog.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser
+                var user = new IdentityUser()
                 {
                     UserName=model.Name,
-                    Email = model.Email
+                    Email=model.Email,
                 };
                 var result= await userManager.CreateAsync(user, model.Password);
-
                 if (result.Succeeded)
                 {
                     await signIn.SignInAsync(user, isPersistent: false);

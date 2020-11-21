@@ -59,8 +59,6 @@ C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\bin\Debug\netcoreapp3.1\Micro
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
-C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.csproj.CoreCompileInputs.cache
-C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.dll
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.pdb
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.genruntimeconfig.cache
@@ -81,4 +79,6 @@ C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor\Views\Home\Details.cshtml.g.cs
+C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.csproj.CoreCompileInputs.cache
+C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.csprojAssemblyReference.cache
