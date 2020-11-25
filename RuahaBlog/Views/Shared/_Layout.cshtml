@@ -1,8 +1,11 @@
 ﻿@inject SignInManager<CustomisedUser> signInManager;
 
-<html class="no-js">
+<html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
     <environment include="Development">
         <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
         <script src="~/lib/jquery/jquery.js"></script>
@@ -33,20 +36,25 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/favicon/apple-touch-icon-114x114.png" />
 
     <link rel="stylesheet" media="screen" href="~/css/base.css" />
+    <link rel="stylesheet" class="alt" href="~/css/theme/default.css">
+
 
     <script src="~/js/modernizr-2.6.2.min.js"></script>
 
     <!-- JQuery Plugins-->
-    <script type="text/javascript" src="js/jquery-min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type='text/javascript' src="js/menuzord.js"></script>
-    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-    <script type='text/javascript' src="js/jflickrfeed.min.js"></script>
-    <script type='text/javascript' src="js/jquery.fancybox.js"></script>
-    <script type='text/javascript' src="js/jquery.validate.min.js"></script>
-    <script type='text/javascript' src="twitter/jquery.tweet.js"></script>
+    <script type="text/javascript" src="~/js/jquery-min.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="~/js/menuzord.js"></script>
+    <script type="text/javascript" src="~/js/owl.carousel.min.js"></script>
+    <script type='text/javascript' src="~/js/jflickrfeed.min.js"></script>
+    <script type='text/javascript' src="~/js/jquery.fancybox.js"></script>
+    <script type='text/javascript' src="~/js/jquery.validate.min.js"></script>
+    <script type='text/javascript' src="~/twitter/jquery.tweet.js"></script>
 
-    <script type='text/javascript' src="js/site-custom.js"></script>
+    <!-- JQuery Map Plugin -->
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="~/js/jquery.gmap.min.js"></script>
+    <script type='text/javascript' src="~/js/site-custom.js"></script>
     <script>
         var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
         (function (d, t) {
@@ -59,6 +67,27 @@
 <body class="wide mr-lg-auto">
     <!-- xxx Header Start xxx -->
     <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        A Bright Sunny Day Or Some Line Of Text
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                                <li>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="nav-wrap">
             <div id="menuzord" class="menuzord red pull-left">
                 <a href="javascript:void(0)" class="menuzord-brand"><img src="~/images/logo.png" alt="Ruaha Logo"></a>
@@ -101,14 +130,14 @@
         <div class="clearfix"></div>
     </header>
     <!-- xxx Header End xxx -->
-    <div>
-        @RenderBody()
-
-        @if (IsSectionDefined("Scripts"))
-        {
-            @RenderSection("Scripts", required: true)
-        }
+ <div>
+            @RenderBody()
+        
     </div>
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: true)
+    }
     <!-- xxx Back To Top xxx -->
     <div id="back-top">
         <a class="img-circle" href="#top">
@@ -116,23 +145,22 @@
         </a>
     </div>
     <!-- xxx End xxx -->
-
     <!-- JQuery Plugins-->
-    <script type="text/javascript" src="js/jquery-min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type='text/javascript' src="js/menuzord.js"></script>
-    <script type="text/javascript" src="js/jquery.cookie.js"></script>
-    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-    <script type='text/javascript' src="js/jflickrfeed.min.js"></script>
-    <script type='text/javascript' src="js/jquery.fancybox.js"></script>
-    <script type='text/javascript' src="js/jquery.validate.min.js"></script>
-    <script type='text/javascript' src="twitter/jquery.tweet.js"></script>
+    <script type="text/javascript" src="~/js/jquery-min.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="~/js/menuzord.js"></script>
+    <script type="text/javascript" src="~/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="~/js/owl.carousel.min.js"></script>
+    <script type='text/javascript' src="~/js/jflickrfeed.min.js"></script>
+    <script type='text/javascript' src="~/js/jquery.fancybox.js"></script>
+    <script type='text/javascript' src="~/js/jquery.validate.min.js"></script>
+    <script type='text/javascript' src="~/twitter/jquery.tweet.js"></script>
 
     <!-- JQuery Map Plugin -->
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-    <script type="text/javascript" src="js/jquery.gmap.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.gmap.min.js"></script>
 
-    <script type='text/javascript' src="js/site-custom.js"></script>
+    <script type='text/javascript' src="~/js/site-custom.js"></script>
 
     <script>
         var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];

@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<BogPost>
 
-@{ 
+@{
     ViewBag.Title = "Ruaha : Personal Blog";
-    }
+}
 
 <!-- xxx Main SLider xxx -->
 <section class="main-slider">
@@ -15,7 +15,7 @@
                     <div class="meta">
                         <span><a href="#"><i class="fa fa-tags"></i> People</a></span>
                         <span class="date">25-Apr-15</span>
-                        <span><a href="#" data-toggle="tooltip" title="" data-original-title="25" class="like-icons"><i class="fa fa-thumbs-o-up"></i></a></span>
+                        <span><a href="#" data-toggle="tooltip" title="" data-original-title="25" class="like-icons"><i class="fa fa-heart-o"></i></a></span>
                         <span><a href="#" data-toggle="tooltip" title="" data-original-title="12" class="comments-icon"><i class="fa fa-comments-o"></i></a></span>
                     </div>
                 </div>
@@ -80,9 +80,9 @@
     </div>
 </section>
 
-<body class="wide" id="body-content">
-    <div class="container">
 
+<div class="wide" id="body-content">
+    <div class="container">
         <div class="row justify-content-center m-3">
             <div class="col-sm-12">
                 @{ foreach (var Post in Model)
@@ -99,12 +99,14 @@
                                     <span>
                                         <label><i>@Post.NumberOfLikes</i> Likes</label>
                                         <a asp-controller="Home" asp-action="BlogLikes" asp-route-Id="@Post.Id" data-toggle="tooltip" title="" data-original-title="Twitter" class="like-icons">
-                                            <i class="fa fa-heart-o"></i>
+                                            <i class="fa fa-thumbs-up"></i>
                                         </a>
+                                    </span>
+                                    <span>
                                         <label><i>@Post.NumberOfComments</i> Comments</label>
                                         <a asp-controller="Home" asp-action="Details" asp-route-Id="@Post.Id"
                                            data-toggle="tooltip" title="" data-original-title="12" class="comments-icon">
-                                        <i class="fa fa-comments-o"></i>
+                                            <i class="fa fa-comments-o"></i>
                                         </a>
                                     </span>
                                 </div>
@@ -130,6 +132,6 @@
                     }
                 };
             </div>
-            </div>
         </div>
-        </body>
+    </div>
+</div>

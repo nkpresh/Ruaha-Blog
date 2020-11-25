@@ -21,8 +21,8 @@
                         <div class="meta">
                             <span><a href="#"><i class="fa fa-tag"></i> @Model.Post.Category.ToString()</a></span>
                             <span class="date">@Model.Post.PostTime</span>
-                            <span><a href="#" data-toggle="tooltip" title="" data-original-title="25" class="fa-thumbs-up"><i class="fa fa-heart-o"></i></a></span>
-                            <span><a asp-controller="Home" asp-action="Comment" asp-route-Id="@Model.Post.Id" data-toggle="tooltip" title="" data-original-title="12" class="comments-icon" style="width:50px;height:50px"><i class="fa fa-comment" ></i></a></span>
+                            <span><a asp-controller="Home" asp-action="BlogLikes" asp-route-Id="@Model.Post.Id" data-toggle="tooltip" title="" data-original-title="25" class="like-icons"><i class="fa fa-thumbs-up"></i></a></span>
+                            <span><a asp-controller="Home" asp-action="Comment" asp-route-Id="@Model.Post.Id" data-toggle="tooltip" title="" data-original-title="12" class="comments-icon" ><i class="fa fa-comment" ></i></a></span>
                         </div>
                         <h3 class="blog-title">@Model.Post.Headline</h3>
                         <div class="admin-text">
