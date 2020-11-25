@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RuahaBlog.Models
 {
-    public static class ModelBuilderExtensi
+    public static class ModelBuilderExtension
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {

@@ -8,7 +8,7 @@ namespace RuahaBlog.Models
     public interface ICommentRepository
     {
         BlogComments Comment(BlogComments Comment);
-        IEnumerable<BlogComments> GetAllComment();
+        IEnumerable<BlogComments> GetAllComment(int Id);
         BlogComments GetComment(int Id);
         int GetNumberOfComments();
     }

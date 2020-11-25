@@ -21,9 +21,10 @@ namespace RuahaBlog.Models
             return Comment;
         }
 
-        public IEnumerable<BlogComments> GetAllComment()
+        public IEnumerable<BlogComments> GetAllComment(int blogId)
         {
-            return context.BlogComments;
+            var PostComment = context.BlogComments.Where(x => x.BlogPostId == blogId);
+            return PostComment;
         }
 
         public BlogComments GetComment(int Id)

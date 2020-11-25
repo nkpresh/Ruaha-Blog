@@ -41,7 +41,7 @@ using Microsoft.Extensions.Configuration;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0e302e38d18dd1dd002f945ff67cca38e3d924db", @"/Views/Home/Creat.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b45a465570d00e840616e860771ee1b87e976b0a", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d6a400852664fe43df6ece5dd2012eb1e47bff7e", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Creat : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<CreatViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("form-control"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);

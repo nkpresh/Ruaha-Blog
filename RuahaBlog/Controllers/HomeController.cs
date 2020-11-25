@@ -23,14 +23,13 @@ namespace RuahaBlog.Controllers
 
         private readonly AppDbContext context;
 
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<CustomisedUser> userManager;
 
         private readonly ILikeRepository _likePostRepository;
         private readonly ICommentRepository _commentRepository;
-
         public HomeController(IBlogPostRepository blogPostRepository,
             IWebHostEnvironment hostEnvironment, AppDbContext context,
-            UserManager<IdentityUser> userManager, ILikeRepository LikePostRepository,
+            UserManager<CustomisedUser> userManager, ILikeRepository LikePostRepository,
             ICommentRepository commentRepository)
 
         {
@@ -143,38 +142,50 @@ namespace RuahaBlog.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [AllowAnonymous]
         [HttpGet]
-        [HttpPost]
-        public IActionResult UnlikeThis(int BlogId)
+        public async  Task<ViewResult> Details(int Id)
         {
-
-
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    var Username = User.Identity.Name;
-            //    var Member = context.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
-            //    BlogLikes like = context.BlogLikes.FirstOrDefault(z => z.Id == Id && z.UserId==Member.Id);
-            //    context.BlogLikes.Remove(like);
-            //    context.SaveChanges();
-            //}
-            return RedirectToAction("Index", "Home");
-        }
-
-        public ViewResult Details(int Id)
-        {
-            var blogPost = _blogPostRepository.GetBlogPost(Id);
-            if (blogPost == null)
+            DetailsViewModel Model = new DetailsViewModel()
             {
-                return View("Page Not Found", Id);
-            }
-
-            DetailsViewModel detailsViewModel = new DetailsViewModel()
-            {
-                BlogPost = blogPost,
-                PageTitle = "Details"
+                Commentor = await userManager.GetUserAsync(User),
+                Post = context.BlogPosts.FirstOrDefault(x=>x.Id==Id),
+                Comments = _commentRepository.GetAllComment(Id),
             };
-            return View(detailsViewModel);
+            return View(Model);
 
+        }
+        [HttpGet]
+        public IActionResult Comment(int Id)
+        {
+            CommentViewModel commentView = new CommentViewModel()
+            {
+                PostId =Id,
+                User = context.Users.FirstOrDefault(x=>x.Id==userManager.GetUserId(User)),
+                
+            };
+            return View(commentView);
+        }
+        [HttpPost]
+        public IActionResult Comment( CommentViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var Comment = new BlogComments()
+                {
+                    UserName = model.UserName,
+                    UserId = userManager.GetUserId(User),
+                    BlogPostId = model.PostId,
+                    Body = model.Comment,
+                    TimeOfComment = DateTime.Now,
+                };
+                _commentRepository.Comment(Comment);
+                _blogPostRepository.GetBlogPost(model.PostId).NumberOfComments = context.BlogComments.Where(x => x.BlogPostId == model.PostId).Count();
+                context.SaveChanges();
+                return RedirectToAction("Details", new {id=Comment.BlogPostId });
+
+            }
+            return View();
         }
 
     }

@@ -1,5 +1,5 @@
-﻿
-@inject SignInManager<IdentityUser> signInManager;
+﻿@inject SignInManager<CustomisedUser> signInManager;
+
 <html class="no-js">
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -59,28 +59,6 @@
 <body class="wide mr-lg-auto">
     <!-- xxx Header Start xxx -->
     <header>
-        <div class="top-bar">
-            <div class="row">
-
-                <div class="container">
-                    <div class="col-sm-6">
-                        A Bright Sunny Day Or Some Line Of Text
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="social-icons">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-                                <li>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div id="nav-wrap">
             <div id="menuzord" class="menuzord red pull-left">
                 <a href="javascript:void(0)" class="menuzord-brand"><img src="~/images/logo.png" alt="Ruaha Logo"></a>
@@ -125,11 +103,12 @@
     <!-- xxx Header End xxx -->
     <div>
         @RenderBody()
+
+        @if (IsSectionDefined("Scripts"))
+        {
+            @RenderSection("Scripts", required: true)
+        }
     </div>
-    @if (IsSectionDefined("Scripts"))
-    {
-        @RenderSection("Scripts", required: true)
-    }
     <!-- xxx Back To Top xxx -->
     <div id="back-top">
         <a class="img-circle" href="#top">
@@ -137,32 +116,7 @@
         </a>
     </div>
     <!-- xxx End xxx -->
-    <!-- xxx Style Switcher (Only For Demo) xxx -->
-    <div class="styleswitcher">
-        <div class="arrow-box"><a class="switch-button open"><i class="fa fa-gear fa-2x"></i></a> </div>
-        <h6>Color Skins</h6>
-        <ul class="color-scheme">
-            <li><a class="default" rel="css/theme/default.css" href="#"></a></li>
-            <li><a class="apple" rel="css/theme/apple.css" href="#"></a></li>
-            <li><a class="pink" rel="css/theme/pink.css" href="#"></a></li>
-            <li><a class="teal" rel="css/theme/teal.css" href="#"></a></li>
-            <li><a class="gold" rel="css/theme/gold.css" href="#"></a></li>
-            <li><a class="downy" rel="css/theme/downy.css" href="#"></a></li>
-            <li><a class="atlantis" rel="css/theme/atlantis.css" href="#"></a></li>
-            <li><a class="red" rel="css/theme/red.css" href="#"></a></li>
-            <li><a class="violet" rel="css/theme/violet.css" href="#"></a></li>
-            <li><a class="pomegranate" rel="css/theme/pomegranate.css" href="#"></a></li>
-            <li><a class="violet-red" rel="css/theme/violet-red.css" href="#"></a></li>
-            <li><a class="mexican-red" rel="css/theme/mexican-red.css" href="#"></a></li>
-            <li><a class="victoria" rel="css/theme/victoria.css" href="#"></a></li>
-            <li><a class="orient" rel="css/theme/orient.css" href="#"></a></li>
-            <li><a class="jgger" rel="css/theme/jgger.css" href="#"></a></li>
-            <li><a class="de-york" rel="css/theme/de-york.css" href="#"></a></li>
-            <li><a class="blaze-orange" rel="css/theme/blaze-orange.css" href="#"></a></li>
-            <li><a class="hot-pink" rel="css/theme/hot-pink.css" href="#"></a></li>
-        </ul>
-    </div>
-    <!-- xxx Style Switcher (Only For Demo) xxx -->
+
     <!-- JQuery Plugins-->
     <script type="text/javascript" src="js/jquery-min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>

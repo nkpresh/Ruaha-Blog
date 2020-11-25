@@ -28,7 +28,7 @@ namespace RuahaBlog
         {
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(_config.GetConnectionString("RuahaDBConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<CustomisedUser,IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 4;
                 options.Password.RequireDigit = false;
@@ -37,10 +37,12 @@ namespace RuahaBlog
 
             services.AddMvc(Options => Options.EnableEndpointRouting = false);
             services.AddMvc();
-            services.AddScoped<IBlogPostRepository, SQLBlogRepository>();
+            services.AddTransient<IBlogPostRepository, SQLBlogRepository>();
             services.AddScoped<ILikeRepository, SQLLikeRepositry>();
             services.AddScoped<ICommentRepository, SQLCommentRepository>();
-            services.AddTransient<BlogComments>();
+            services.AddTransient<CommentViewModel>();
+            services.AddTransient<BogPost>();
+
             services.AddSession(o =>
             {
                 o.IOTimeout = TimeSpan.FromMinutes(2);

@@ -35,7 +35,7 @@ namespace RuahaBlog.Models
         }
         public BogPost GetBlogPost(int Id)
         {
-            return context.BlogPosts.Find(Id);
+            return context.BlogPosts.FirstOrDefault(x => x.Id == Id);
         }
         public BogPost Update(BogPost blogPostChanges)
         {

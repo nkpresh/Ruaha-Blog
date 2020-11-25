@@ -9,7 +9,7 @@ namespace RuahaBlog.ViewModels
 {
     public class RegisterViewModel
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
         [MaxLength(20, ErrorMessage = "Name can not exceed 20 characters")]
         public string Name { get; set; }
