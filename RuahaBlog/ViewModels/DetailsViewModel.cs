@@ -11,8 +11,7 @@ namespace RuahaBlog.ViewModels
     {
         public IEnumerable<BlogComments> Comments { get; set; }
         public BogPost Post { get; set; }
-        public CustomisedUser Commentor { get; set; }
-        public UserManager<CustomisedUser> Commentors { get; set; }
-
+        public string UserPicture { get; set; }
+        public CustomisedUser MyUser { get; set; }
     }
 }

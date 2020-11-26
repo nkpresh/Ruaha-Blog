@@ -83,3 +83,4 @@ C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Ruaha
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor\Views\Home\Comment.cshtml.g.cs
 C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\RuahaBlog.csprojAssemblyReference.cache
+C:\Users\Precious\source\repos\RuahaBlog\RuahaBlog\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs

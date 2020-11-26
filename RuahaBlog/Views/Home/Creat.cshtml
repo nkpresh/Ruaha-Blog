@@ -14,7 +14,7 @@
 <div id="body-content">
     <div class="container">
         <div class="row">
-            <form enctype="multipart/form-data" asp-controller="home" asp-action="Creat" method="post" >
+            <form enctype="multipart/form-data" asp-controller="home" asp-action="Creat" method="post">
 
                 <div class="form-group row">
                     <div class="col-3">
@@ -81,3 +81,13 @@
         </div>
     </div>
 </div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+    </script>
+}

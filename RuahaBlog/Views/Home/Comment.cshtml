@@ -1,20 +1,20 @@
 ﻿@model CommentViewModel
-@inject IEnumerable<BlogComments> comments;
+
 
     <link href="~/css/CommentDesign.css" rel="stylesheet" />
 
 @* The Comment Section *@
 @{
-    var photo = "/images/" + (Model.User.ProfilePicture ?? "profile.png");
+    var photo = "/images/" + (Model.GetUser.ProfilePicture ?? "profile.png");
 }
 @{
-    if (comments.Count() == 0)
+    if (Model.ListOfComments.Count() == 0)
     {
     <form enctype="multipart/form-data" asp-controller="home" asp-action="Comment" method="post">
         <div class="bg-light p-2">
             <input asp-for="PostId" value="@Model.PostId" hidden />
             <input asp-for="UserName" value="@User.Identity.Name" hidden />
-
+            <input asp-for="ProfilePicture" value="@Model.GetUser.ProfilePicture" hidden />
             <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="@photo" width="40"><textarea asp-for="@Model.Comment" class="form-control ml-1 shadow-none textarea"></textarea></div>
             <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" style="width:auto" type="submit">Post comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button></div>
         </div>
@@ -26,11 +26,13 @@
             <div class="d-flex justify-content-center row">
                 <div class="col-md-8">
                     <div class="d-flex flex-column comment-section">
-                        @foreach (BlogComments blogComment in comments)
+                        @foreach (BlogComments blogComment in Model.ListOfComments)
                         {
+                            var ProfilePic = "/images/" + ( "profile.png");
+
                             <div class="bg-white p-2">
                                 <div class="d-flex flex-row user-info">
-                                    <img class="rounded-circle" src="@photo" width="40">
+                                    <img class="rounded-circle" src="@ProfilePic" width="40">
                                     <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">@blogComment.UserName</span><span class="date text-black-50">Shared publicly - @blogComment.</span></div>
                                 </div>
                                 <div class="mt-2">
@@ -40,8 +42,10 @@
                         }
                         <form enctype="multipart/form-data" asp-controller="home" asp-action="Comment" method="post">
                             <div class="bg-light p-2">
+                                <input asp-for="ProfilePicture" value="@Model.GetUser.ProfilePicture" hidden />
                                 <input asp-for="PostId" value="@Model.PostId" hidden />
-                                <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="@photo" width="40"><textarea asp-for="@Model.Comment" class="form-control ml-1 shadow-none textarea"></textarea></div>
+                                <input asp-for="UserName" value="@User.Identity.Name" hidden />
+                                <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="@photo" width="30" height="30"><textarea asp-for="@Model.Comment" class="form-control ml-1 shadow-none textarea"></textarea></div>
                                 <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" style="width:auto" type="submit">Post comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button></div>
                             </div>
                         </form>

@@ -40,7 +40,7 @@ namespace RuahaBlog
             services.AddTransient<IBlogPostRepository, SQLBlogRepository>();
             services.AddScoped<ILikeRepository, SQLLikeRepositry>();
             services.AddScoped<ICommentRepository, SQLCommentRepository>();
-            services.AddTransient<CommentViewModel>();
+            services.AddTransient<CustomisedUser>();
             services.AddTransient<BogPost>();
 
             services.AddSession(o =>

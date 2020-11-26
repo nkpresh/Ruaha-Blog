@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using RuahaBlog.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +10,6 @@ namespace RuahaBlog.ViewModels
 {
     public class RegisterViewModel
     {
-        public int Id { get; set; }
         [Required]
         [MaxLength(20, ErrorMessage = "Name can not exceed 20 characters")]
         public string Name { get; set; }
@@ -23,8 +23,10 @@ namespace RuahaBlog.ViewModels
         [Display(Name ="Comfirm Password")]
         [Compare("Password",ErrorMessage ="Password and Confirm Password do not match")]
         public string ConfirmPassword { get; set; }
-        [DataType(DataType.ImageUrl)]
+        [Required]
+        public UserType User { get; set; }
         public IFormFile Photo { get; set; }
+
     }
 }
  

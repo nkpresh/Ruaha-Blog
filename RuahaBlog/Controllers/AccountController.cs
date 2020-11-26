@@ -29,7 +29,7 @@ namespace RuahaBlog.Controllers
         }
         private string ProcessUploadedFile(RegisterViewModel model)
         {
-            string uniqueFileName;
+            string uniqueFileName=null;
             if (model.Photo != null)
             {
                 string UploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
@@ -39,10 +39,7 @@ namespace RuahaBlog.Controllers
                 model.Photo.CopyTo(fileStream);
                 fileStream.Close();
             }
-            else
-            {
-                uniqueFileName = "~/images/profile.png";
-            }
+
             return uniqueFileName;
         }
         [HttpGet]
@@ -61,6 +58,7 @@ namespace RuahaBlog.Controllers
                     UserName=model.Name,
                     Email=model.Email,
                     ProfilePicture=uniqueFileName,
+                    TypeOfUser=model.User
                 };
                 var result= await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

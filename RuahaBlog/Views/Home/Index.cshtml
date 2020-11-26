@@ -97,16 +97,16 @@
                                     <span><a href="#"><i class="fa fa-tag"></i> @Post.Category</a></span>
                                     <span class="date">@Post.PostTime</span>
                                     <span>
-                                        <label><i>@Post.NumberOfLikes</i> Likes</label>
-                                        <a asp-controller="Home" asp-action="BlogLikes" asp-route-Id="@Post.Id" data-toggle="tooltip" title="" data-original-title="Twitter" class="like-icons">
-                                            <i class="fa fa-thumbs-up"></i>
+                                        <label><i>@Post.NumberOfLikes</i> </label>
+                                        <a asp-controller="Home" asp-action="BlogLikes" asp-route-Id="@Post.Id" data-toggle="tooltip" title="" data-original-title="@Post.NumberOfLikes" class="like-icons">
+                                            <i class="fa fa-thumbs-up fa-3x"></i>
                                         </a>
                                     </span>
                                     <span>
-                                        <label><i>@Post.NumberOfComments</i> Comments</label>
+                                        <label><i>@Post.NumberOfComments</i> </label>
                                         <a asp-controller="Home" asp-action="Details" asp-route-Id="@Post.Id"
-                                           data-toggle="tooltip" title="" data-original-title="12" class="comments-icon">
-                                            <i class="fa fa-comments-o"></i>
+                                           data-toggle="tooltip" title="" data-original-title="@Post.NumberOfComments" class="comments-icon">
+                                            <i class="fa fa-comments fa-3x"></i>
                                         </a>
                                     </span>
                                 </div>

@@ -66,10 +66,7 @@ namespace RuahaBlog.Controllers
                 model.Photo.CopyTo(fileStream);
                 fileStream.Close();
             }
-            else
-            {
 
-            }
             return uniqueFileName;
         }
 
@@ -116,7 +113,7 @@ namespace RuahaBlog.Controllers
                 }
                 else
                 {
-                    BlogLikes postLike = context.BlogLikes.FirstOrDefault(x => x.BlogId == Id);
+                    BlogLikes postLike = context.BlogLikes.FirstOrDefault(x => x.UserId == userManager.GetUserId(User));
                     if (context.BlogLikes.Contains(postLike))
                     {
                         if (postLike.UserId == likes.UserId)
@@ -144,11 +141,11 @@ namespace RuahaBlog.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async  Task<ViewResult> Details(int Id)
+        public ViewResult Details(int Id)
         {
             DetailsViewModel Model = new DetailsViewModel()
             {
-                Commentor = await userManager.GetUserAsync(User),
+                
                 Post = context.BlogPosts.FirstOrDefault(x=>x.Id==Id),
                 Comments = _commentRepository.GetAllComment(Id),
             };
@@ -161,8 +158,8 @@ namespace RuahaBlog.Controllers
             CommentViewModel commentView = new CommentViewModel()
             {
                 PostId =Id,
-                User = context.Users.FirstOrDefault(x=>x.Id==userManager.GetUserId(User)),
-                
+                GetUser=userManager.Users.FirstOrDefault((x=>x.Id==userManager.GetUserId(User))),
+                ListOfComments=_commentRepository.GetAllComment(Id),
             };
             return View(commentView);
         }
@@ -178,6 +175,7 @@ namespace RuahaBlog.Controllers
                     BlogPostId = model.PostId,
                     Body = model.Comment,
                     TimeOfComment = DateTime.Now,
+                    UserPicture=model.ProfilePicture,
                 };
                 _commentRepository.Comment(Comment);
                 _blogPostRepository.GetBlogPost(model.PostId).NumberOfComments = context.BlogComments.Where(x => x.BlogPostId == model.PostId).Count();
@@ -188,5 +186,10 @@ namespace RuahaBlog.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult About()
+        {
+            return View();
+        }
     }
 }
