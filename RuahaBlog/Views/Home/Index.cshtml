@@ -81,16 +81,16 @@
 </section>
 
 
-<div class="wide" id="body-content">
+<section id="body-content">
     <div class="container">
-        <div class="row justify-content-center m-3">
-            <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-8">
                 @{ foreach (var Post in Model)
                     {
                         var photoPath = "/images/" + (Post.PhotoPaths ?? "error/Colorlib.jpg");
                         <div class="blog-post">
                             <div class="item-thumbs">
-                                <img src="@photoPath" />
+                                <img src="@photoPath" style="height:450px" />
                             </div>
                             <div class="blog-outer">
                                 <div class="meta">
@@ -131,7 +131,297 @@
                         </div>
                     }
                 };
+                <!-- xxx Pagination Style xxx -->
+                <div class="pagination-wrap text-right">
+                    <ul class="pagination">
+                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                    </ul>
+                </div>
+                <!-- xxx Pagination End xxx -->
+            </div>
+            <div class="col-sm-4">
+                <!-- xxx Widet Box xxx -->
+                <div class="widgets-box">
+                    <div class="sidebar-head"><span>About Me</span></div>
+                    <div class="sidebar-text">
+                        <div class="author-image">
+                            <img src="images/faces_1.jpg" alt="" class="img-circle">
+                        </div>
+                        <div class="author-intro">
+                            Proin at ante sed quam malesuada rutrum non ut orci. Aenean ullamcorper placerat erat, et porttitor velit aliquam vitae.
+                        </div>
+                        <div class="social-icons text-center">
+                            <ul>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- xxx Widet Box End xxx -->
+                <!-- xxx Widet Box xxx -->
+                <div class="widgets-box">
+                    <div class="sidebar-head"><span>Newsletter Signup</span></div>
+                    <div class="sidebar-text">
+                        <p>Sign up to receive latest updates with Ruaha Blog!</p>
+                        <div class="newsletter-input">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Email Here">
+                        </div>
+                        <div class="newsletter-btn">
+                            <button type="submit" class="btn-default">Send <i class="fa fa-check-circle"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- xxx Widet Box End xxx -->
+                <!-- xxx Widet Box xxx -->
+                <div class="widgets-box">
+                    <div class="sidebar-head bg-2"><span>Recent Posts</span></div>
+                    <div class="sidebar-text">
+                        <ul class="sidebar-post">
+                            <li>
+                                <div class="image-thumb">
+                                    <a href="#"><img src="images/slider/slider-1.jpg" alt=""></a>
+                                </div>
+                                <div class="post-text">
+                                    <h4><a href="#">Who i am - A Mystery Begins</a></h4>
+                                    <p>Nunc tristique tellus quam, id ultrices urna rhoncus non..</p>
+                                    <div class="post-date">
+                                        <i class="fa fa-clock-o"></i> 21 Sep, 2015
+                                    </div>
+                                    <div class="post-date">
+                                        <a href="#"><i class="fa fa-comments-o"></i>15</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="image-thumb">
+                                    <a href="#"><img src="images/slider/slider-2.jpg" alt=""></a>
+                                </div>
+                                <div class="post-text">
+                                    <h4><a href="#">Local Tram In A City</a></h4>
+                                    <p>Nunc tristique tellus quam, id ultrices urna rhoncus non..</p>
+                                    <div class="post-date">
+                                        <i class="fa fa-clock-o"></i> 21 Sep, 2015
+                                    </div>
+                                    <div class="post-date">
+                                        <a href="#"><i class="fa fa-comments-o"></i>15</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="image-thumb">
+                                    <a href="#"><img src="images/slider/slider-3.jpg" alt=""></a>
+                                </div>
+                                <div class="post-text">
+                                    <h4><a href="#">Bahama's Trip: Waiting For Our Flight</a></h4>
+                                    <p>Nunc tristique tellus quam, id ultrices urna rhoncus non..</p>
+                                    <div class="post-date">
+                                        <i class="fa fa-clock-o"></i> 21 Sep, 2015
+                                    </div>
+                                    <div class="post-date">
+                                        <a href="#"><i class="fa fa-comments-o"></i>15</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- xxx Widet Box End xxx -->
+                <!-- xxx Widet Box xxx -->
+                <div class="widgets-box">
+                    <div class="sidebar-head"><span>Categories</span></div>
+                    <div class="sidebar-text">
+                        <ul class="category">
+                            <li>
+                                <div class="cat-desc">
+                                    <div class="category-details">
+                                        <span><a href="#">Entertainment</a></span>
+                                    </div>
+                                    <div class="dots"></div>
+                                    <div class="category-links">
+                                        <span>(10)</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cat-desc">
+                                    <div class="category-details">
+                                        <span><a href="#">Sports</a></span>
+                                    </div>
+                                    <div class="dots"></div>
+                                    <div class="category-links">
+                                        <span>(05)</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cat-desc">
+                                    <div class="category-details">
+                                        <span><a href="#">Travel</a></span>
+                                    </div>
+                                    <div class="dots"></div>
+                                    <div class="category-links">
+                                        <span>(15)</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cat-desc">
+                                    <div class="category-details">
+                                        <span><a href="#">Lifestyle</a></span>
+                                    </div>
+                                    <div class="dots"></div>
+                                    <div class="category-links">
+                                        <span>(25)</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cat-desc">
+                                    <div class="category-details">
+                                        <span><a href="#">Jobs</a></span>
+                                    </div>
+                                    <div class="dots"></div>
+                                    <div class="category-links">
+                                        <span>(105)</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cat-desc">
+                                    <div class="category-details">
+                                        <span><a href="#">Movies</a></span>
+                                    </div>
+                                    <div class="dots"></div>
+                                    <div class="category-links">
+                                        <span>(02)</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cat-desc">
+                                    <div class="category-details">
+                                        <span><a href="#">Music</a></span>
+                                    </div>
+                                    <div class="dots"></div>
+                                    <div class="category-links">
+                                        <span>(07)</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- xxx Widet Box End xxx -->
+                <!-- xxx Widet Box xxx -->
+                <div class="widgets-box">
+                    <div class="sidebar-head"><span>From Flickr</span></div>
+                    <div class="sidebar-text">
+                        <ul id="basicuse" class="photo-thumbs"></ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!-- xxx Widet Box End xxx -->
+                <!-- xxx Widet Box xxx -->
+                <div class="widgets-box text-center">
+                    <div class="sidebar-head"><span>Banner Ads</span></div>
+                    <div class="sidebar-text">
+                        <img src="images/theme_forest_300x250.jpg" alt="">
+                    </div>
+                </div>
+                <!-- xxx Widet Box End xxx -->
+                <!-- xxx Widet Box xxx -->
+                <div class="widgets-box">
+                    <div class="sidebar-head"><span>Slider Posts</span></div>
+                    <div class="sidebar-text">
+                        <div class="owl-carousel" id="single-slider">
+                            <div class="item">
+                                <a href="#"><img alt="" src="images/slider/slider-6.jpg"></a>
+                                <div class="recent-post-text">
+                                    <h4><a href="#">Beauty With Perfect Combination</a></h4>
+                                    <div class="post-date">
+                                        <i class="fa fa-clock-o"></i> 21 Sep, 2015
+                                    </div>
+                                    <div class="post-date">
+                                        <a href="#"><i class="fa fa-comments-o"></i>15</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <a href="#"><img alt="" src="images/slider/slider-7.jpg"></a>
+                                <div class="recent-post-text">
+                                    <h4><a href="#">Future Desk For Web Architects</a></h4>
+                                    <div class="post-date">
+                                        <i class="fa fa-clock-o"></i> 21 Sep, 2015
+                                    </div>
+                                    <div class="post-date">
+                                        <a href="#"><i class="fa fa-comments-o"></i>15</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <a href="#"><img alt="" src="images/slider/slider-8.jpg"></a>
+                                <div class="recent-post-text">
+                                    <h4><a href="#">I know what it means</a></h4>
+                                    <div class="post-date">
+                                        <i class="fa fa-clock-o"></i> 21 Sep, 2015
+                                    </div>
+                                    <div class="post-date">
+                                        <a href="#"><i class="fa fa-comments-o"></i>15</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- xxx Widet Box End xxx -->
+                <!-- xxx Widet Box xxx -->
+                <div class="widgets-box">
+                    <div class="sidebar-head"><span>Popular Tags</span></div>
+                    <div class="sidebar-text">
+                        <div class="tags">
+                            <a href="#">Music</a>
+                            <a href="#">New</a>
+                            <a href="#">Outstanding</a>
+                            <a href="#">Quote</a>
+                            <a href="#">Web</a>
+                            <a href="#">Sports</a>
+                            <a href="#">Travel</a>
+                            <a href="#">Shortcode</a>
+                            <a href="#">WordPress</a>
+                            <a href="#">Entertainment</a>
+                            <a href="#">Lifestyle</a>
+                            <a href="#">Movies</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- xxx Widet Box End xxx -->
+                <!-- xxx Widet Box xxx -->
+                <div class="widgets-box">
+                    <div class="sidebar-head"><span>Text Widgets</span></div>
+                    <div class="sidebar-text">
+                        Vestibulum ullamcorper risus purus, at porttitor diam rhoncus id. Suspendisse tortor risus, consequat et urna varius, faucibus molestie lacus. Sed eu ligula porttitor,
+                        hendrerit mi vitae.
+                    </div>
+
+                </div>
+                <!-- xxx Widet Box End xxx -->
+
             </div>
         </div>
     </div>
-</div>
+    <div class="styleswitcher" style="color:#ff6a00">
+        <div class="arrow-box"><a class="switch-button open"><i class="fa fa-gear fa-2x"></i></a> </div>
+        <h6>Bitcoin</h6>
+        <a ><i class="fa fa-bitcoin fa-3x"></i></a>
+        </div>
+    
+</section>

@@ -12,8 +12,6 @@ namespace RuahaBlog.Models
         IEnumerable<BogPost> GetAllBlogPost();
         BogPost Update(BogPost blogPostChange);
         BogPost Delete(int id);
-        //public bool Liked { get; set; }
-
 
     }
 }
